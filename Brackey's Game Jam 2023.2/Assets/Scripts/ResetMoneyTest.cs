@@ -16,4 +16,8 @@ public class ResetMoneyTest : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("Coins");
     }
+    public void Billionaire()
+    {
+        PlayerPrefs.SetInt("Coins", 3169);
+    }
 }
