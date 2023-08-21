@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        
         if (transform.rotation.z > 0.70 || transform.rotation.z < -0.70)
         {
             _submarine.flipY = true;
@@ -40,6 +41,8 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveForce;
 
         LAMouse();
+  
+       
     }
 
     private void LAMouse()
