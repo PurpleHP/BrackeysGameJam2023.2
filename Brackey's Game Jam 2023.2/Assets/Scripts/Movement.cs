@@ -2,19 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
-    public Rigidbody2D rb;
-    Vector2 movement;
+    public float speed = 5f;
+    public float forceDamping = 0.05f;
+    private Rigidbody2D rb;
+    private Vector2 forceToApply;
+    private Transform m_transform;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        m_transform = transform;
+    }
 
     void Update()
     {
-        movement.x = Input.GetAxis("Horizontal");
-        movement.y = Input.GetAxis("Vertical");
+        Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
+        Vector2 moveForce = playerInput * speed;
+        moveForce += forceToApply;
+        forceToApply /= forceDamping;
+
+        if (forceToApply.magnitude <= 0.01f)
+        {
+            forceToApply = Vector2.zero;
+        }
+
+        rb.velocity = moveForce;
+
+        LAMouse();
     }
-    void FixedUpdate()
+
+    private void LAMouse()
     {
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
-    } 
+        Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - m_transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        Quaternion rotation = Quaternion.AngleAxis(angle - 0, Vector3.forward);
+        m_transform.rotation = rotation;
+
+        // Add code here to handle shooting or whatever the intention of this function is
+    }
 }
