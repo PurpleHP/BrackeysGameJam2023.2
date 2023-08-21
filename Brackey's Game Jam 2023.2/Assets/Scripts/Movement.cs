@@ -9,15 +9,24 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 forceToApply;
     private Transform m_transform;
-
+    private SpriteRenderer _submarine;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         m_transform = transform;
+        _submarine = GetComponent<SpriteRenderer>();
     }
 
     void Update()
     {
+        if (transform.rotation.z > 0.70 || transform.rotation.z < -0.70)
+        {
+            _submarine.flipY = true;
+        }
+        else
+        {
+            _submarine.flipY = false;
+        }
         Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 moveForce = playerInput * speed;
         moveForce += forceToApply;
