@@ -14,10 +14,24 @@ public class SceneManagerScript : MonoBehaviour
             SceneManager.LoadScene(2);
         }
     }
+    IEnumerator WaitForAnimation()
+    {
+
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene(1);
+
+    }
     public void GameScence()
     {
         animator.SetBool("IsButtonPressed", true);
         Debug.Log("Button Pressed");
-        SceneManager.LoadScene(1);
+        StartCoroutine(WaitForAnimation());
+
+    }
+
+    public void ShopMenu()
+    {
+        SceneManager.LoadScene(2);
+
     }
 }

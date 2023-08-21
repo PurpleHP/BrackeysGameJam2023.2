@@ -6,7 +6,7 @@ public class SaveCoin : MonoBehaviour
 {
     public int totalCoins;
     public int flashLight = 0; //1 olabilir
-    public int oxygenLevel = 1; //maks 3
+    public int oxygenLevel; //maks 3
     public int weaponLevel = 1; //maks 3
 
     private void Start()
