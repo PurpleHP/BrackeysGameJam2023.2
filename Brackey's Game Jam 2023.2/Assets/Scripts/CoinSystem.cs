@@ -43,6 +43,10 @@ public class CoinSystem : MonoBehaviour
             _oxygenCoinImage.enabled = false;
             _oxygenPriceText.text = "Your Oxygen Level Is At Max";
         }
+        else if (coinScript.oxygenLevel > 3)
+        {
+            coinScript.oxygenLevel = 3;
+        }
         else
         {
             _oxygenPriceText.text = "Buy For " + oxygenLevelCost[coinScript.oxygenLevel];
