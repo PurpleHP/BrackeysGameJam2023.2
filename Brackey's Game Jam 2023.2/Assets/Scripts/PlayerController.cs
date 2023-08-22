@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         {
             _submarine.flipY = false;
         }
-        Vector2 playerInput = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
+        Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 moveForce = playerInput * speed;
         moveForce += forceToApply;
         forceToApply /= forceDamping;

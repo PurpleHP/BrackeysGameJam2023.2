@@ -34,4 +34,9 @@ public class SceneManagerScript : MonoBehaviour
         SceneManager.LoadScene(2);
 
     }
+    public void GameExit()
+    {
+        Application.Quit();
+        Debug.Log("Exit!");
+    }
 }
