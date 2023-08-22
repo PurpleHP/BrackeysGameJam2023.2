@@ -24,7 +24,6 @@ public class SceneManagerScript : MonoBehaviour
     public void GameScence()
     {
         animator.SetBool("IsButtonPressed", true);
-        Debug.Log("Button Pressed");
         StartCoroutine(WaitForAnimation());
 
     }
