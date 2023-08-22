@@ -837,7 +837,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &357694997
 Transform:
   m_ObjectHideFlags: 0
@@ -847,7 +847,7 @@ Transform:
   m_GameObject: {fileID: 357694996}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -152, y: 363, z: 2.1234}
+  m_LocalPosition: {x: -74, y: 363, z: 2.1234}
   m_LocalScale: {x: 2.4791067, y: 2.4791067, z: 2.4791067}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -872,7 +872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &387251189
 Transform:
   m_ObjectHideFlags: 0
@@ -1619,7 +1619,7 @@ RectTransform:
   m_Father: {fileID: 200326349}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3213,7 +3213,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 736dca05c0f3d424c9fa25ed438d27da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
@@ -3639,11 +3639,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8053503161521345463, guid: 781ff7656db690041a80df81bc74d2a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.34
+      value: 4.17
       objectReference: {fileID: 0}
     - target: {fileID: 8053503161521345463, guid: 781ff7656db690041a80df81bc74d2a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.71
+      value: -3.51
       objectReference: {fileID: 0}
     - target: {fileID: 8053503161521345463, guid: 781ff7656db690041a80df81bc74d2a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -4630,7 +4630,7 @@ RectTransform:
   m_Father: {fileID: 937327795}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -4676,9 +4676,9 @@ CanvasRenderer:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1423727834}
   - {fileID: 519420032}
   - {fileID: 1877200105}
   - {fileID: 1935954934}
   - {fileID: 1032000762}
-  - {fileID: 1423727834}
   - {fileID: 1290592512}
