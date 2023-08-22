@@ -5,9 +5,10 @@ using UnityEngine;
 public class SaveCoin : MonoBehaviour
 {
     public int totalCoins;
-    public int flashLight = 0; //1 olabilir
-    public int oxygenLevel; //maks 3
-    public int weaponLevel = 1; //maks 3
+    public int speedLevel; // maks 4, default 1
+    public int flashLight = 0; //1 olabilir, default 0: Belki tutorial olarak aldýrýlabilir
+    public int oxygenLevel; //maks 4, default 1
+    public int weaponLevel = 1; //maks 3???
 
     private void Start()
     {
@@ -25,7 +26,6 @@ public class SaveCoin : MonoBehaviour
     {
         if (collision.CompareTag("Coin"))
         {
-            Debug.Log(totalCoins);
             totalCoins += 1;
             PlayerPrefs.SetInt("Coins", totalCoins);
         }

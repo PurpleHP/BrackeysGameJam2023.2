@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    public float speed = 5f;
+    [SerializeField] SaveCoin speedLevel;
+    private int[] realSpeed = { 4, 6, 8, 10 }; //Depth Calculator'dan da deðiþtirilmeli
+    public float speed;
     public float forceDamping = 0.05f;
     private Rigidbody2D rb;
     private Vector2 forceToApply;
@@ -16,10 +18,19 @@ public class PlayerController : MonoBehaviour
         m_transform = transform;
         _submarine = GetComponent<SpriteRenderer>();
     }
-
     void Update()
     {
-        
+        if ((PlayerPrefs.HasKey("Speed")))
+        {
+            Debug.Log(speedLevel.speedLevel + "laaaaaaaaaaaaan");
+            speed = realSpeed[speedLevel.speedLevel];
+        }
+        else
+        {
+            Debug.Log("Bulunamadý");
+            speed = realSpeed[0];
+        }
+        Debug.Log(speed);
         if (transform.rotation.z > 0.70 || transform.rotation.z < -0.70)
         {
             _submarine.flipY = true;
@@ -41,8 +52,6 @@ public class PlayerController : MonoBehaviour
         rb.velocity = moveForce;
 
         LAMouse();
-  
-       
     }
 
     private void LAMouse()

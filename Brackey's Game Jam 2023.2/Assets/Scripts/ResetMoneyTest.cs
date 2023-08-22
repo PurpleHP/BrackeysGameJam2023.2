@@ -11,7 +11,11 @@ public class ResetMoneyTest : MonoBehaviour
         PlayerPrefs.DeleteKey("Oxygen");
         _oxygenCoinImage.enabled = true;
     }
-
+    public void ResetSpeed()
+    {
+        PlayerPrefs.DeleteKey("Speed");
+        _oxygenCoinImage.enabled = true;
+    }
     public void ResetCoin()
     {
         PlayerPrefs.DeleteKey("Coins");
@@ -19,5 +23,10 @@ public class ResetMoneyTest : MonoBehaviour
     public void Billionaire()
     {
         PlayerPrefs.SetInt("Coins", 3169);
+    }
+
+    public void DeleteEveryKey()
+    {
+        PlayerPrefs.DeleteAll();
     }
 }
