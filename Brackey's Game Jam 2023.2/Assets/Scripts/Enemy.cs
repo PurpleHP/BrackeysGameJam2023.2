@@ -11,8 +11,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] float health;
     private Animator anim;
     private float distance;
+    private BoxCollider2D box2d;
     private void Awake()
     {
+        box2d = GetComponent<BoxCollider2D>();
         anim = GetComponent<Animator>();
     }
     void Update()
@@ -58,21 +60,17 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                Debug.Log("RAHHH ÖLDÜM");
-                //anim.SetBool("IsDead", true);
+                box2d.isTrigger = true;
                 anim.SetTrigger("IsDead1");
-                Destroy(gameObject);
+                Destroy(gameObject,1f);
             }
             else
             {
-                Debug.Log("CAN GÝTTÝ!!!");
-                //anim.SetBool("IsHurt", true);
                 anim.SetTrigger("IsHurt1");
             }
         }
         if (collision.CompareTag("Player"))
         {
-            //anim.SetBool("Attacking",true);
             anim.SetTrigger("Attacking1");
         }
     }
