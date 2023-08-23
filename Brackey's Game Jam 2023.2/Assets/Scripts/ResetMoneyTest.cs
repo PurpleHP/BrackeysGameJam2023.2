@@ -13,6 +13,7 @@ public class ResetMoneyTest : MonoBehaviour
     }
     public void ResetSpeed()
     {
+        PlayerPrefs.DeleteKey("SpeedLevel");
         PlayerPrefs.DeleteKey("Speed");
         _oxygenCoinImage.enabled = true;
     }

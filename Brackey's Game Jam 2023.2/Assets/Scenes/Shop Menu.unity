@@ -5918,6 +5918,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81010b569d7060749b86b5ec4c864c2b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedLevel: {fileID: 0}
   speed: 5
   forceDamping: 0.05
 --- !u!212 &2011335431
@@ -6047,6 +6048,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   totalCoins: 0
   speedLevel: 0
+  realSpeed: 0
   flashLight: 0
   oxygenLevel: 0
   weaponLevel: 1
@@ -6076,7 +6078,7 @@ GameObject:
   - component: {fileID: 2077083940}
   - component: {fileID: 2077083939}
   m_Layer: 5
-  m_Name: "DELETE OXYGEN LEVEL BUTTON (TEST AMA\xC7LI)"
+  m_Name: "DELETE SPEED LEVEL BUTTON (TEST AMA\xC7LI)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6147,7 +6149,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2011335436}
         m_TargetAssemblyTypeName: ResetMoneyTest, Assembly-CSharp
-        m_MethodName: ResetOxygen
+        m_MethodName: ResetSpeed
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

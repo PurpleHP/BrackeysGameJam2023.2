@@ -5,39 +5,42 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] SaveCoin speedLevel;
-    private int[] realSpeed = { 4, 6, 8, 10 }; //Depth Calculator'dan da deðiþtirilmeli
+    [SerializeField] private SpriteRenderer _ryanGosling;
+    private int[] realSpeed = { 4, 6, 8, 10 }; //SaveCoin'den da deðiþtirilmeli
     public float speed;
     public float forceDamping = 0.05f;
     private Rigidbody2D rb;
     private Vector2 forceToApply;
     private Transform m_transform;
     private SpriteRenderer _submarine;
+    
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         m_transform = transform;
         _submarine = GetComponent<SpriteRenderer>();
-    }
-    void Update()
-    {
-        if ((PlayerPrefs.HasKey("Speed")))
+        if (PlayerPrefs.HasKey("Speed"))
         {
-            Debug.Log(speedLevel.speedLevel + "laaaaaaaaaaaaan");
-            speed = realSpeed[speedLevel.speedLevel];
+            speed = PlayerPrefs.GetInt("Speed");
         }
         else
         {
-            Debug.Log("Bulunamadý");
             speed = realSpeed[0];
         }
+    }
+    void Update()
+    {
         Debug.Log(speed);
         if (transform.rotation.z > 0.70 || transform.rotation.z < -0.70)
         {
             _submarine.flipY = true;
+            _ryanGosling.flipY = true;
         }
         else
         {
             _submarine.flipY = false;
+            _ryanGosling.flipY = false;
+
         }
         Vector2 playerInput = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")).normalized;
         Vector2 moveForce = playerInput * speed;

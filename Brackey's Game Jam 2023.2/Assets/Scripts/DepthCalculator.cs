@@ -11,13 +11,9 @@ public class DepthCalculator : MonoBehaviour
     [SerializeField] GameObject submarine;
     private float _depth;
     private int _intDepth;
-    private float _depthSpeed;
+    [SerializeField] private float _depthSpeed = 5f;
     [SerializeField] private TextMeshProUGUI _depthText;
 
-    private void Start()
-    {
-        
-    }
     void Update()
     {
         _depth = (submarine.transform.position.y * _depthSpeed);

@@ -23,7 +23,7 @@ public class CoinSystem : MonoBehaviour
     //Speed ***************
 
     private int[] speedLevelCost = { 0, 3, 5, 7 };
-    private int[] realSpeed = { 4, 6, 8, 10 }; //Depth Calculator'dan da deðiþtirilmeli
+    private int[] realSpeed = { 4, 6, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _speedLevelText;
     [SerializeField] private TextMeshProUGUI _speedPriceText;
     [SerializeField] private Image _speedCoinImage;
@@ -54,9 +54,9 @@ public class CoinSystem : MonoBehaviour
 
         //Speed ***************
 
-        if ((PlayerPrefs.HasKey("Speed")))
+        if ((PlayerPrefs.HasKey("SpeedLevel")))
         {
-            coinScript.speedLevel = PlayerPrefs.GetInt("Speed");
+            coinScript.speedLevel = PlayerPrefs.GetInt("SpeedLevel");
             _speedLevelImage.sprite = OxygenLevelImages[coinScript.speedLevel - 1].sprite;
 
         }
@@ -66,6 +66,18 @@ public class CoinSystem : MonoBehaviour
             _speedLevelImage.sprite = OxygenLevelImages[0].sprite;
 
         }
+        if ((PlayerPrefs.HasKey("Speed")))
+        {
+            coinScript.realSpeed = PlayerPrefs.GetInt("Speed");
+
+        }
+        else
+        {
+            coinScript.realSpeed = realSpeed[0];
+
+        }
+
+        //Speed ***************
     }
 
     public void CanBuyOxygen()
@@ -89,7 +101,10 @@ public class CoinSystem : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - speedLevelCost[coinScript.speedLevel]);
                 coinScript.speedLevel++;
-                PlayerPrefs.SetInt("Speed", coinScript.speedLevel);
+                coinScript.realSpeed = realSpeed[coinScript.speedLevel - 1];
+                PlayerPrefs.SetInt("SpeedLevel", coinScript.speedLevel);
+                PlayerPrefs.SetInt("Speed", coinScript.realSpeed);
+
             }
         }
     }
