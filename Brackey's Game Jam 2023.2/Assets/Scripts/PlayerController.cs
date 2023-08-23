@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(speed);
         if (transform.rotation.z > 0.70 || transform.rotation.z < -0.70)
         {
             _submarine.flipY = true;
