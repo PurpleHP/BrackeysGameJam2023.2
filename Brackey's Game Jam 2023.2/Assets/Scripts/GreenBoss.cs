@@ -16,6 +16,7 @@ public class GreenBoss : MonoBehaviour
     private Animator anim;
     public bool isDead = false;
     private float distance;
+    private bool finalShot = false;
     private void Awake()
     {
         health = maxHealth;
@@ -47,21 +48,28 @@ public class GreenBoss : MonoBehaviour
         }
         
     }
-
+    IEnumerator WaitTillBossDeath()
+    {
+        anim.SetTrigger("isDead");
+        yield return new WaitForSeconds(3);
+        isDead = true;
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
             health--;
-            if (health <= 0)
+            Debug.Log("VURDU!");
+            if (health <= 0 && !finalShot)
             {
-                //anim.SetTrigger("isDead");
+                finalShot = true;
                 room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
-                isDead = true;
-                Destroy(gameObject);
+                StartCoroutine(WaitTillBossDeath());
+
             }
         }
     }

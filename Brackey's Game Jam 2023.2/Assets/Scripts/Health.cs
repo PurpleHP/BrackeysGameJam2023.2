@@ -45,6 +45,4 @@ public class Health : MonoBehaviour
             StartCoroutine(WaitForCoolDown());
         }
     }
-
-
 }
