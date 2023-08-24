@@ -10,7 +10,6 @@ public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject submarine;
-    [SerializeField] private float _depthSpeed = 5f;
     [SerializeField] public int SubmarineHealth = 5;
     [SerializeField] private TextMeshProUGUI _healthText;
 

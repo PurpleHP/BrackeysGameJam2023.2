@@ -12,13 +12,14 @@ public class GreenBoss : MonoBehaviour
     [SerializeField] public float health;
     [SerializeField] CircleCollider2D box2d1;
     [SerializeField] CircleCollider2D box2d2;
-
-    //private Animator anim;
+    [SerializeField] GreenBossRoom room;
+    private Animator anim;
+    public bool isDead = false;
     private float distance;
     private void Awake()
     {
         health = maxHealth;
-        //anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
     void Update()
     {
@@ -45,22 +46,28 @@ public class GreenBoss : MonoBehaviour
         }
         else
         {
+
         }
-
     }
-
+    IEnumerator WaitFor2Seconds()
+    {
+        yield return new WaitForSeconds(2);
+        isDead = true;
+        Destroy(gameObject);
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
             health--;
-            if (health <= 0)
+            if (health == 0)
             {
+                anim.SetTrigger("isDead");
+                room.isOnGreenBoss = false;
                 speed = 0;
-                Destroy(gameObject);
-            }
-            else
-            {
+                box2d1.enabled = false;
+                box2d2.enabled = false;
+                WaitFor2Seconds();
             }
         }
     }
