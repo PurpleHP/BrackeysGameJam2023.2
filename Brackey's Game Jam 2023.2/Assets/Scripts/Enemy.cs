@@ -8,18 +8,21 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float distanceBetween;
     [SerializeField] private float enemyScale;
-    [SerializeField] float health;
+    [SerializeField] public float maxHealth;
+    [SerializeField] public float health;
+    [SerializeField] BoxCollider2D box2d1;
+    [SerializeField] BoxCollider2D box2d2;
+
     private Animator anim;
     private float distance;
-    private BoxCollider2D box2d;
     private void Awake()
     {
-        box2d = GetComponent<BoxCollider2D>();
+        health = maxHealth;
         anim = GetComponent<Animator>();
     }
     void Update()
     {
-        Debug.Log(transform.rotation.eulerAngles.z);
+
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -60,9 +63,13 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
-                box2d.isTrigger = true;
-                anim.SetTrigger("IsDead1");
-                Destroy(gameObject,1f);
+                speed = 0;
+                box2d1.enabled = false;
+                box2d2.enabled = false;
+                anim.SetBool("IsHurt", true);
+                anim.SetBool("IsDead", true);
+                Destroy(gameObject, 1.7f);
+
             }
             else
             {
