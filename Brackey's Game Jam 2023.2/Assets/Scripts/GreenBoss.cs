@@ -9,7 +9,7 @@ public class GreenBoss : MonoBehaviour
     [SerializeField] private float distanceBetween;
     [SerializeField] private float enemyScale;
     [SerializeField] public float maxHealth;
-    [SerializeField] public float health;
+    [SerializeField] private float health;
     [SerializeField] CircleCollider2D box2d1;
     [SerializeField] CircleCollider2D box2d2;
     [SerializeField] GreenBossRoom room;
@@ -23,6 +23,7 @@ public class GreenBoss : MonoBehaviour
     }
     void Update()
     {
+        Debug.Log(health);
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -44,30 +45,23 @@ public class GreenBoss : MonoBehaviour
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
-        else
-        {
+        
+    }
 
-        }
-    }
-    IEnumerator WaitFor2Seconds()
-    {
-        yield return new WaitForSeconds(2);
-        Destroy(gameObject);
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Bullet"))
         {
             health--;
-            if (health == 0)
+            if (health <= 0)
             {
                 //anim.SetTrigger("isDead");
                 room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
-                Destroy(gameObject,1f);
                 isDead = true;
+                Destroy(gameObject);
             }
         }
     }

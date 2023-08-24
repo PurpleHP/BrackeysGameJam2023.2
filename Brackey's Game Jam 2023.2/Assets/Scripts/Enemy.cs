@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] BoxCollider2D box2d1;
     [SerializeField] BoxCollider2D box2d2;
     [SerializeField] GameObject coinPrefab;
-
+    [SerializeField] string enemyType;
     private Animator anim;
     private float distance;
     private void Awake()
@@ -42,13 +42,13 @@ public class Enemy : MonoBehaviour
 
         if (distance < distanceBetween)
         {
-            anim.SetBool("StartWalking", true);
+            anim.SetBool(enemyType + "StartWalking", true);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
         else
         {
-            anim.SetBool("StartWalking", false);
+            anim.SetBool(enemyType + "StartWalking", false);
         }
        
     }
@@ -64,19 +64,19 @@ public class Enemy : MonoBehaviour
                 box2d1.enabled = false;
                 box2d2.enabled = false;
                 Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                anim.SetBool("IsHurt", true);
-                anim.SetBool("IsDead", true);
+                anim.SetBool(enemyType + "IsHurt", true);
+                anim.SetBool(enemyType + "IsDead", true);
                 Destroy(gameObject, 1.7f);
 
             }
             else
             {
-                anim.SetTrigger("IsHurt1");
+                anim.SetTrigger(enemyType + "IsHurt1");
             }
         }
         if (collision.CompareTag("Player"))
         {
-            anim.SetTrigger("Attacking1");
+            anim.SetTrigger(enemyType + "Attacking1");
         }
     }
 }
