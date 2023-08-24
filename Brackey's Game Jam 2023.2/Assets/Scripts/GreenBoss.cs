@@ -67,7 +67,7 @@ public class GreenBoss : MonoBehaviour
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
-                WaitFor2Seconds();
+                Destroy(gameObject,1f);
             }
         }
     }
