@@ -52,7 +52,6 @@ public class GreenBoss : MonoBehaviour
     IEnumerator WaitFor2Seconds()
     {
         yield return new WaitForSeconds(2);
-        isDead = true;
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -62,12 +61,13 @@ public class GreenBoss : MonoBehaviour
             health--;
             if (health == 0)
             {
-                anim.SetTrigger("isDead");
+                //anim.SetTrigger("isDead");
                 room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
                 Destroy(gameObject,1f);
+                isDead = true;
             }
         }
     }
