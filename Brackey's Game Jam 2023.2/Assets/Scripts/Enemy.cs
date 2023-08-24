@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
-                GameObject bullet = Instantiate(coinPrefab, gameObject.transform.position, gameObject.transform.rotation);
+                Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 anim.SetBool("IsHurt", true);
                 anim.SetBool("IsDead", true);
                 Destroy(gameObject, 1.7f);
