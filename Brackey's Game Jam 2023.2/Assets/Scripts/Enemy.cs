@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] public float health;
     [SerializeField] BoxCollider2D box2d1;
     [SerializeField] BoxCollider2D box2d2;
+    [SerializeField] GameObject coinPrefab;
 
     private Animator anim;
     private float distance;
@@ -62,6 +63,7 @@ public class Enemy : MonoBehaviour
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
+                GameObject bullet = Instantiate(coinPrefab, gameObject.transform.position, gameObject.transform.rotation);
                 anim.SetBool("IsHurt", true);
                 anim.SetBool("IsDead", true);
                 Destroy(gameObject, 1.7f);
