@@ -10,6 +10,7 @@ public class ChangeCinemachineScript : MonoBehaviour
     [SerializeField] GreenBossMain GreenBoss;
     [SerializeField] GreenBoss GreenBossChild1;
     [SerializeField] GreenBoss GreenBossChild2;
+    
     public GameObject greenBossPosition;
     public GameObject submarine;
     private void Update()
@@ -24,6 +25,7 @@ public class ChangeCinemachineScript : MonoBehaviour
             cVC.m_Follow = submarine.transform;
             cVC.m_Lens.OrthographicSize = 5.6f;
         }
+        
     }
     
 }
