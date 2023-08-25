@@ -11,11 +11,9 @@ public class JellyFish : MonoBehaviour
     [SerializeField] public float maxHealth;
     [SerializeField] public float health;
     [SerializeField] BoxCollider2D box2d1;
-    [SerializeField] BoxCollider2D AttackRange;
-    private bool Iswalk = false;
-    private enum MovementState {idle, walk, hurt, death}
-    private MovementState state;
-
+    [SerializeField] BoxCollider2D box2d2;
+    [SerializeField] GameObject coinPrefab;
+    [SerializeField] string enemyType;
     private Animator anim;
     private float distance;
     private void Awake()
@@ -25,12 +23,7 @@ public class JellyFish : MonoBehaviour
     }
     void Update()
     {
-        JellyFishMovement();
-        UpdateAnimationState();
-        Debug.Log("state " + state);
-    }
-    private void JellyFishMovement()
-    {
+
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -49,26 +42,42 @@ public class JellyFish : MonoBehaviour
 
         if (distance < distanceBetween)
         {
+            anim.SetBool(enemyType + "IsWalk", true);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-            state = MovementState.walk;
         }
         else
         {
-            state = MovementState.idle;
+            anim.SetBool(enemyType + "IsWalk", false);
         }
-    }
-    private void UpdateAnimationState()
-    {
-        MovementState state;
-        if (Iswalk)
-        {
-            state = MovementState.walk;
-        }
-        else
-        {
-            state = MovementState.idle;
-        }
+
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Bullet"))
+        {
+            health--;
+            if (health <= 0)
+            {
+                speed = 0;
+                box2d1.enabled = false;
+                box2d2.enabled = false;
+                Instantiate(coinPrefab, transform.position, Quaternion.identity);
+                anim.SetTrigger(enemyType + "IsDead");
+                //anim.SetBool(enemyType + "IsHurt", true);
+                //anim.SetBool(enemyType + "IsDead", true);
+                Destroy(gameObject, 1.7f);
+
+            }
+            else if (health > 0)
+            {
+                anim.SetTrigger(enemyType + "IsHurt");
+            }
+        }
+        if (collision.CompareTag("Player"))
+        {
+            anim.SetTrigger(enemyType + "IsAttack");
+        }
+    }
 }
