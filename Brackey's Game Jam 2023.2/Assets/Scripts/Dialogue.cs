@@ -111,7 +111,6 @@ public class Dialogue : MonoBehaviour
             buttonTwo1.SetActive(false);
             buttonTwo2.SetActive(false);
             skipButton.SetActive(true);
-
         }
         lines[index + 1] = "The answer was.....  NOT CORRECT...";
         submarineHealth.SubmarineHealth--;
