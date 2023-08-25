@@ -23,7 +23,7 @@ public class CoinSystem : MonoBehaviour
     //Speed ***************
 
     private int[] speedLevelCost = { 0, 3, 5, 7 };
-    private int[] realSpeed = { 4, 6, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
+    private int[] realSpeed = { 6, 7, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _speedLevelText;
     [SerializeField] private TextMeshProUGUI _speedPriceText;
     [SerializeField] private Image _speedCoinImage;

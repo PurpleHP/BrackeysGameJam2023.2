@@ -7,10 +7,11 @@ public class SaveCoin : MonoBehaviour
     public int totalCoins;
     public int speedLevel; // maks 4, default 1
     public int realSpeed;
-    private int[] realSpeedList = { 4, 6, 8, 10 };
-    public int flashLight = 0; //1 olabilir, default 0: Belki tutorial olarak aldýrýlabilir
+    private int[] realSpeedList = { 6, 7, 8, 10 };
+
+    //public int flashLight = 0; //1 olabilir, default 0: Belki tutorial olarak aldýrýlabilir
     public int oxygenLevel; //maks 4, default 1
-    public int weaponLevel = 1; //maks 3???
+    //public int weaponLevel = 1; //maks 3???
 
     private void Start()
     {
@@ -31,6 +32,15 @@ public class SaveCoin : MonoBehaviour
         else
         {
             realSpeed = realSpeedList[0];
+        }
+        if ((PlayerPrefs.HasKey("Oxygen")))
+        {
+            oxygenLevel = PlayerPrefs.GetInt("Oxygen");
+
+        }
+        else
+        {
+            oxygenLevel = 1;
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
