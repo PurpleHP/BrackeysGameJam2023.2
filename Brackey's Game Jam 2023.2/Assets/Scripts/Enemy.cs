@@ -70,7 +70,7 @@ public class Enemy : MonoBehaviour
                 Destroy(gameObject, 1.7f);
 
             }
-            else
+            else if (health > 0)
             {
                 anim.SetTrigger(enemyType + "IsHurt");
             }
