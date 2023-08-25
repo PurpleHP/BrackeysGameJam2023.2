@@ -25,7 +25,6 @@ public class RedBoss : MonoBehaviour
     {
         if(speed != 0)
         {
-            Debug.Log("aaaa");
             distance = Vector2.Distance(transform.position, player.transform.position);
             Vector2 direction = player.transform.position - transform.position;
             direction.Normalize();
