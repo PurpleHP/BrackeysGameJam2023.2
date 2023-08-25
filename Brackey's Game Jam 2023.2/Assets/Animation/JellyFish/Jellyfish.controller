@@ -38,7 +38,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jellyfishIsWalking
+    m_ConditionEvent: jellyfishIsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1350489303132990555}
@@ -63,7 +63,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jellyfishIsWalking
+    m_ConditionEvent: jellyfishIsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1350489303132990555}
@@ -138,7 +138,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jellyfishIsAttacking
+    m_ConditionEvent: jellyfishIsAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2255645945614838928}
@@ -217,7 +217,7 @@ AnimatorController:
   m_Name: Jellyfish
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: jellyfishIsWalking
+  - m_Name: jellyfishIsWalk
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -235,7 +235,7 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: jellyfishIsAttacking
+  - m_Name: jellyfishIsAttack
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -378,7 +378,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jellyfishIsAttacking
+    m_ConditionEvent: jellyfishIsAttack
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 2255645945614838928}
@@ -403,7 +403,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 2
-    m_ConditionEvent: jellyfishIsWalking
+    m_ConditionEvent: jellyfishIsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 5787020967147815116}
@@ -428,7 +428,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: jellyfishIsWalking
+    m_ConditionEvent: jellyfishIsWalk
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1350489303132990555}
