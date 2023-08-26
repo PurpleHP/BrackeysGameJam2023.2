@@ -5,6 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject player;
+    private SpriteRenderer sr;
     [SerializeField] private float speed;
     [SerializeField] private float distanceBetween;
     [SerializeField] private float enemyScale;
@@ -20,6 +21,7 @@ public class Enemy : MonoBehaviour
     {
         health = maxHealth;
         anim = GetComponent<Animator>();
+        sr = GetComponent<SpriteRenderer>();
     }
     void Update()
     {
@@ -65,9 +67,7 @@ public class Enemy : MonoBehaviour
                 box2d2.enabled = false;
                 Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 anim.SetTrigger(enemyType + "IsDead");
-                //anim.SetBool(enemyType + "IsHurt", true);
-                //anim.SetBool(enemyType + "IsDead", true);
-                Destroy(gameObject, 1.7f);
+                StartCoroutine(Death());
 
             }
             else if (health > 0)
@@ -79,5 +79,14 @@ public class Enemy : MonoBehaviour
         {
             anim.SetTrigger(enemyType + "IsAttack");
         }
+    }
+        
+        //anim.SetBool(enemyType + "IsHurt", true);
+        //anim.SetBool(enemyType + "IsDead", true);
+    IEnumerator Death()
+    {
+        yield return new WaitForSeconds(0.69f);
+        sr.enabled = false;
+        Destroy(gameObject);
     }
 }
