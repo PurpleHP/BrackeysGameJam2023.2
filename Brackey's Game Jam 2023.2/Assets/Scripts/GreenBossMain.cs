@@ -9,12 +9,12 @@ public class GreenBossMain : MonoBehaviour
     [SerializeField] private float distanceBetween;
     [SerializeField] private float enemyScale;
     [SerializeField] public float maxHealth;
-    [SerializeField] private float health;
+    [SerializeField] public float health;
     [SerializeField] CircleCollider2D box2d1;
     [SerializeField] CircleCollider2D box2d2;
     [SerializeField] GreenBossRoom room;
-    [SerializeField] GameObject child1;
-    [SerializeField] GameObject child2;
+    [SerializeField] public GameObject child1;
+    [SerializeField] public GameObject child2;
 
     private Animator anim;
     public bool isDead = false;

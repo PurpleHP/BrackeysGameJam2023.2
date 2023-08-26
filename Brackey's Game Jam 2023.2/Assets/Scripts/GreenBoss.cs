@@ -60,7 +60,6 @@ public class GreenBoss : MonoBehaviour
         if (collision.CompareTag("Bullet"))
         {
             health--;
-            Debug.Log("VURDU!");
             if (health <= 0 && !finalShot)
             {
                 finalShot = true;
