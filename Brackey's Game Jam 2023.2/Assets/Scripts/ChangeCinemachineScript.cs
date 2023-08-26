@@ -35,7 +35,7 @@ public class ChangeCinemachineScript : MonoBehaviour
         if (PurpleBossRoom.isOnPurpleBoss)
         {
             cVC.m_Follow = purpleBossPosition.transform;
-            cVC.m_Lens.OrthographicSize = 20f;
+            cVC.m_Lens.OrthographicSize = 23f;
         }
     }
 }

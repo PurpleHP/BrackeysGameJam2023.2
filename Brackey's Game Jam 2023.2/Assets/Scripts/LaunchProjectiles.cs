@@ -8,6 +8,8 @@ public class LaunchProjectiles : MonoBehaviour
 	[SerializeField]
 	int numberOfProjectiles;
 
+	private int[] numOfProjList = { 30, 45, 60 };
+	private int index = 0;
 	[SerializeField] GameObject purpleBoss;
 	[SerializeField]
 	GameObject projectile;
@@ -28,7 +30,15 @@ public class LaunchProjectiles : MonoBehaviour
 	public void Fire()
 	{
 		startPoint = purpleBoss.transform.position;
-		SpawnProjectiles(numberOfProjectiles);
+		SpawnProjectiles(numOfProjList[index]);
+		if(index+1 == numOfProjList.Length)
+        {
+			index = 0;
+        }
+        else
+        {
+			index++;
+        }
 	}
 
 	private void Update()
@@ -39,8 +49,8 @@ public class LaunchProjectiles : MonoBehaviour
 		}
 		if(cooldown <= 0)
         {
-			Fire();
 			cooldown = currentCooldown;
+			Fire();
 		}
 	}
 
