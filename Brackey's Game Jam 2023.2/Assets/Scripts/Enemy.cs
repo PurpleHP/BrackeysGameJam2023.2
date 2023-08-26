@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] string enemyType;
     private Animator anim;
     private float distance;
+
+    [SerializeField] private float objectId;
     private void Awake()
     {
         health = maxHealth;
@@ -62,6 +64,7 @@ public class Enemy : MonoBehaviour
             health--;
             if (health <= 0)
             {
+                PlayerPrefs.SetInt($"{objectId}", 0);
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;

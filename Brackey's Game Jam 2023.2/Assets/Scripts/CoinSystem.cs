@@ -8,6 +8,7 @@ public class CoinSystem : MonoBehaviour
 {
     [SerializeField] SaveCoin coinScript;
 
+    [SerializeField] Health submarineHealth;
 
     //Oxygen ***************
 
@@ -31,6 +32,15 @@ public class CoinSystem : MonoBehaviour
     [SerializeField] private Image[] SpeedLevelImages;
 
     //Speed **************
+
+    private int[] hpLevelCost = { 0, 3, 5, 7 };
+    private int[] realHP = { 6, 7, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
+    [SerializeField] private TextMeshProUGUI _hpLevelText;
+    [SerializeField] private TextMeshProUGUI _hpPriceText;
+    [SerializeField] private Image _hpCoinImage;
+    [SerializeField] private Image _hpLevelImage;
+    [SerializeField] private Image[] HPLevelImages;
+
 
     //----------------------------------
     void Start()
@@ -78,6 +88,29 @@ public class CoinSystem : MonoBehaviour
         }
 
         //Speed ***************
+
+        if ((PlayerPrefs.HasKey("HP")))
+        {
+            coinScript.speedLevel = PlayerPrefs.GetInt("HPLevel");
+            _hpLevelImage.sprite = HPLevelImages[coinScript.hpLevel - 1].sprite;
+
+        }
+        else
+        {
+            coinScript.speedLevel = 1;
+            _speedLevelImage.sprite = OxygenLevelImages[0].sprite;
+
+        }
+        if ((PlayerPrefs.HasKey("Speed")))
+        {
+            coinScript.realSpeed = PlayerPrefs.GetInt("Speed");
+
+        }
+        else
+        {
+            coinScript.realSpeed = realSpeed[0];
+
+        }
     }
 
     public void CanBuyOxygen()
@@ -108,6 +141,26 @@ public class CoinSystem : MonoBehaviour
             }
         }
     }
+
+    public void CanBuyHP()
+    {
+        if (coinScript.hpLevel < 4)
+        {
+            if (coinScript.totalCoins >= hpLevelCost[coinScript.hpLevel])
+            {
+                PlayerPrefs.SetInt("Coins", coinScript.totalCoins - hpLevelCost[coinScript.hpLevel]);
+                coinScript.hpLevel++;
+                coinScript.realHP = realHP[coinScript.hpLevel - 1];
+                PlayerPrefs.SetInt("HPLevel", coinScript.hpLevel);
+                PlayerPrefs.SetInt("HP", coinScript.realHP);
+
+            }
+        }
+    }
+
+
+
+
     public void Update()
     {
         //Oxygen ***************
@@ -159,5 +212,25 @@ public class CoinSystem : MonoBehaviour
         //Speed ***************
 
         //----------------------------------
+        _hpLevelText.text = "Speed Level: " + coinScript.speedLevel;
+        if (coinScript.hpLevel > 1)
+        {
+            _hpLevelImage.sprite = HPLevelImages[coinScript.hpLevel - 1].sprite;
+        }
+        else
+        {
+            _hpLevelImage.sprite = HPLevelImages[0].sprite;
+        }
+
+        if (coinScript.hpLevel == 4)
+        {
+            _hpCoinImage.enabled = false;
+            _hpPriceText.text = "Your Speed Level Is At Max";
+        }
+        else
+        {
+            _hpPriceText.text = "Buy For " + hpLevelCost[coinScript.hpLevel];
+        }
+
     }
 }

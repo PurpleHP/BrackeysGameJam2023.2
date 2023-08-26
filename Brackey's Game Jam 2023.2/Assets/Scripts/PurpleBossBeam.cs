@@ -8,6 +8,10 @@ public class PurpleBossBeam : MonoBehaviour
 
     [SerializeField] GameObject laser;
 
+    [SerializeField] PurpleBoss boss;
+
+    [SerializeField] PurpleBossRoom purpleRoom;
+
     private float timer = 10f;
     public float rotationSpeed = 36f; // Degrees per second
     public float rotationDuration = 10f; // Seconds
@@ -15,16 +19,22 @@ public class PurpleBossBeam : MonoBehaviour
 
     void Update()
     {
-        if (timer > 0)
+        if (purpleRoom.isOnPurpleBoss)
         {
-            timer -= Time.deltaTime;
+            if (boss.purpleBossHealth > 0)
+            {
+                if (timer > 0)
+                {
+                    timer -= Time.deltaTime;
+                }
+                else
+                {
+                    StartCoroutine(RotateForSeconds(rotationDuration));
+                    timer = 20f;
+                }
+            }
         }
-        else
-        {
-            StartCoroutine(RotateForSeconds(rotationDuration));
-            timer = 20f;
-        }
-
+        
     }
     IEnumerator RotateForSeconds(float seconds)
     {

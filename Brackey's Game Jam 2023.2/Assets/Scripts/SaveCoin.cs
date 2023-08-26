@@ -7,7 +7,12 @@ public class SaveCoin : MonoBehaviour
     public int totalCoins;
     public int speedLevel; // maks 4, default 1
     public int realSpeed;
+    public int hpLevel;
+    public int realHP;
     private int[] realSpeedList = { 6, 7, 8, 10 };
+    private int[] realHPList = { 3, 4, 5, 6 };
+
+    [SerializeField] Health health;
 
     //public int flashLight = 0; //1 olabilir, default 0: Belki tutorial olarak aldýrýlabilir
     public int oxygenLevel; //maks 4, default 1
@@ -41,6 +46,15 @@ public class SaveCoin : MonoBehaviour
         else
         {
             oxygenLevel = 1;
+        }
+        if ((PlayerPrefs.HasKey("HP")))
+        {
+            hpLevel = PlayerPrefs.GetInt("HP");
+            health.SubmarineHealth = hpLevel;
+        }
+        else
+        {
+            hpLevel = realHPList[0];
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

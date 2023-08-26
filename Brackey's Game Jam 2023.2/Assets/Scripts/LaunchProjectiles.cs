@@ -11,6 +11,7 @@ public class LaunchProjectiles : MonoBehaviour
 	private int index = 0;
 	[SerializeField] GameObject purpleBoss;
 	[SerializeField] GameObject projectile;
+	[SerializeField] PurpleBossRoom purpleRoom;
 
 	private float angle = 0f;
 
@@ -44,22 +45,25 @@ public class LaunchProjectiles : MonoBehaviour
 
 	private void Update()
     {
-		if (cooldown > 0)
-		{
-			cooldown -= Time.deltaTime;
-		}
-		if(cooldown <= 0)
+        if (purpleRoom.isOnPurpleBoss)
         {
-			cooldown = currentCooldown;
-			if(angle <= 345)
-            {
-				angle += 15;
-            }
-            else
-            {
-				angle = angle % 360;
-            }
-			Fire();
+			if (cooldown > 0)
+			{
+				cooldown -= Time.deltaTime;
+			}
+			if (cooldown <= 0)
+			{
+				cooldown = currentCooldown;
+				if (angle <= 345)
+				{
+					angle += 15;
+				}
+				else
+				{
+					angle = angle % 360;
+				}
+				Fire();
+			}
 		}
 	}
 

@@ -42,7 +42,7 @@ public class Health : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && CanBeUsed)
         {
-            rb.AddForce(-1 * gameObject.transform.forward * pushForce);
+            //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
         }
     }
@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && CanBeUsed)
         {
-            rb.AddForce(-1 * gameObject.transform.forward * pushForce);
+            //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
         }
     }
