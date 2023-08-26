@@ -14,7 +14,7 @@ public class LaunchProjectiles : MonoBehaviour
 
 	Vector2 startPoint;
 
-	float radius, moveSpeed;
+	[SerializeField] float radius, moveSpeed;
 
 	// Use this for initialization
 	void Start()
@@ -23,27 +23,15 @@ public class LaunchProjectiles : MonoBehaviour
 		moveSpeed = 10;
 	}
 
-	/*
 	public void Fire()
 	{
-	
-			startPoint = purpleBoss.transform.position;
-			SpawnProjectiles(numberOfProjectiles);
-		
-	}*/
-
-	IEnumerator StartProjectile()
-    {
-		yield return new WaitForSeconds(2);
+		startPoint = purpleBoss.transform.position;
 		SpawnProjectiles(numberOfProjectiles);
-
 	}
 
 	private void Update()
     {
 		
-		startPoint = purpleBoss.transform.position;
-		StartCoroutine(StartProjectile());
 	}
 
     void SpawnProjectiles(int numberOfProjectiles)

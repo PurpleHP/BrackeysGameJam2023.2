@@ -42,13 +42,13 @@ public class JellyFish : MonoBehaviour
 
         if (distance < distanceBetween)
         {
-            anim.SetBool(enemyType + "IsWalk", true);
+            //anim.SetBool(enemyType + "IsWalk", true);
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
         }
         else
         {
-            anim.SetBool(enemyType + "IsWalk", false);
+            //anim.SetBool(enemyType + "IsWalk", false);
         }
 
     }

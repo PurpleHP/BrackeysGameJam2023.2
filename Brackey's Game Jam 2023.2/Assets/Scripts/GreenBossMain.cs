@@ -27,7 +27,6 @@ public class GreenBossMain : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(health);
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
