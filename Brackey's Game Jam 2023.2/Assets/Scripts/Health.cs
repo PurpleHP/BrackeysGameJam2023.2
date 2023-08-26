@@ -12,7 +12,12 @@ public class Health : MonoBehaviour
     [SerializeField] GameObject submarine;
     [SerializeField] public int SubmarineHealth = 5;
     [SerializeField] private TextMeshProUGUI _healthText;
-
+    [SerializeField] float pushForce;
+    private Rigidbody2D rb;
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+    }
     void Update()
     {
         _healthText.text = SubmarineHealth + " HP";
@@ -29,12 +34,12 @@ public class Health : MonoBehaviour
         SubmarineHealth--;
         yield return new WaitForSeconds(1);
         CanBeUsed = true;
-
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy") && CanBeUsed)
         {
+            rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
         }
     }
@@ -42,6 +47,7 @@ public class Health : MonoBehaviour
     {
         if (collision.CompareTag("Enemy") && CanBeUsed)
         {
+            rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
         }
     }
