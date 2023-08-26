@@ -32,6 +32,9 @@ public class Health : MonoBehaviour
     {
         CanBeUsed = false;
         SubmarineHealth--;
+        gameObject.GetComponent<SpriteRenderer>().color = Color.red;
+        yield return new WaitForSeconds(0.5f);
+        gameObject.GetComponent<SpriteRenderer>().color = Color.white;
         yield return new WaitForSeconds(1);
         CanBeUsed = true;
     }
