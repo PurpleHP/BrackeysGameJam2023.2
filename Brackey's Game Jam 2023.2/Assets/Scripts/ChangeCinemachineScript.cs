@@ -7,11 +7,18 @@ public class ChangeCinemachineScript : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera cVC;
     [SerializeField] GreenBossRoom GreenBossRoom;
+
     [SerializeField] GreenBossMain GreenBoss;
     [SerializeField] GreenBoss GreenBossChild1;
     [SerializeField] GreenBoss GreenBossChild2;
     
     public GameObject greenBossPosition;
+
+
+    [SerializeField] PurpleBossRoom PurpleBossRoom;
+
+    public GameObject purpleBossPosition;
+
     public GameObject submarine;
     private void Update()
     {
@@ -25,7 +32,10 @@ public class ChangeCinemachineScript : MonoBehaviour
             cVC.m_Follow = submarine.transform;
             cVC.m_Lens.OrthographicSize = 5.6f;
         }
-        
+        if (PurpleBossRoom.isOnPurpleBoss)
+        {
+            cVC.m_Follow = purpleBossPosition.transform;
+            cVC.m_Lens.OrthographicSize = 20f;
+        }
     }
-    
 }
