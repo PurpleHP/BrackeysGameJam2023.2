@@ -10,17 +10,27 @@ public class Health : MonoBehaviour
 {
     // Start is called before the first frame update
     [SerializeField] GameObject submarine;
-    [SerializeField] public int SubmarineHealth = 5;
+    [SerializeField] public int SubmarineHealth;
     [SerializeField] private TextMeshProUGUI _healthText;
     [SerializeField] float pushForce;
     private Rigidbody2D rb;
+
+    private int[] realHP = { 3,4,5,6 };
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        if (PlayerPrefs.HasKey("HP"))
+        {
+            SubmarineHealth = PlayerPrefs.GetInt("HP");
+        }
+        else
+        {
+            SubmarineHealth = realHP[0];
+        }
     }
     void Update()
     {
-        _healthText.text = SubmarineHealth + " HP";
+        _healthText.text = SubmarineHealth.ToString();
         if(SubmarineHealth <= 0)
         {
             SceneManager.LoadScene(1);

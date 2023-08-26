@@ -3558,7 +3558,7 @@ GameObject:
   - component: {fileID: 753669707}
   - component: {fileID: 753669706}
   m_Layer: 5
-  m_Name: Speed Level
+  m_Name: HP Level
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5404,7 +5404,7 @@ GameObject:
   - component: {fileID: 1114506084}
   - component: {fileID: 1114506083}
   m_Layer: 5
-  m_Name: Buy Speed Button
+  m_Name: Buy HP Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5475,7 +5475,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2011335434}
         m_TargetAssemblyTypeName: CoinSystem, Assembly-CSharp
-        m_MethodName: CanBuySpeed
+        m_MethodName: CanBuyHP
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6230,7 +6230,7 @@ GameObject:
   - component: {fileID: 1257400415}
   - component: {fileID: 1257400414}
   m_Layer: 5
-  m_Name: Speed  Price
+  m_Name: HP  Price
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8694,7 +8694,7 @@ GameObject:
   - component: {fileID: 1622030388}
   - component: {fileID: 1622030387}
   m_Layer: 5
-  m_Name: "Speed Level G\xF6sterge"
+  m_Name: "HP Level G\xF6sterge"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10250,6 +10250,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinScript: {fileID: 2011335435}
+  submarineHealth: {fileID: 0}
   _oxygenLevelText: {fileID: 1566762632}
   _oxygenPriceText: {fileID: 1085165215}
   _oxygenCoinImage: {fileID: 1279639686}
@@ -10264,6 +10265,15 @@ MonoBehaviour:
   _speedCoinImage: {fileID: 12045341}
   _speedLevelImage: {fileID: 791425408}
   SpeedLevelImages:
+  - {fileID: 76702672}
+  - {fileID: 266680476}
+  - {fileID: 1999019877}
+  - {fileID: 193485161}
+  _hpLevelText: {fileID: 753669706}
+  _hpPriceText: {fileID: 1257400414}
+  _hpCoinImage: {fileID: 2016743274}
+  _hpLevelImage: {fileID: 1622030387}
+  HPLevelImages:
   - {fileID: 76702672}
   - {fileID: 266680476}
   - {fileID: 1999019877}
@@ -10283,6 +10293,9 @@ MonoBehaviour:
   totalCoins: 0
   speedLevel: 0
   realSpeed: 0
+  hpLevel: 0
+  realHP: 0
+  health: {fileID: 0}
   oxygenLevel: 0
 --- !u!114 &2011335436
 MonoBehaviour:
@@ -10309,7 +10322,7 @@ GameObject:
   - component: {fileID: 2016743275}
   - component: {fileID: 2016743274}
   m_Layer: 5
-  m_Name: Speed Coin Image
+  m_Name: HP Coin Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10591,7 +10604,7 @@ GameObject:
   - component: {fileID: 2086444007}
   - component: {fileID: 2086444006}
   m_Layer: 5
-  m_Name: Speed Boost
+  m_Name: HP Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

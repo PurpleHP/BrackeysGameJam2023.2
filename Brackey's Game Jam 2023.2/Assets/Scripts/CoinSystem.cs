@@ -34,7 +34,7 @@ public class CoinSystem : MonoBehaviour
     //Speed **************
 
     private int[] hpLevelCost = { 0, 3, 5, 7 };
-    private int[] realHP = { 6, 7, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
+    private int[] realHP = { 3,4,5,6 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _hpLevelText;
     [SerializeField] private TextMeshProUGUI _hpPriceText;
     [SerializeField] private Image _hpCoinImage;
@@ -67,13 +67,13 @@ public class CoinSystem : MonoBehaviour
         if ((PlayerPrefs.HasKey("SpeedLevel")))
         {
             coinScript.speedLevel = PlayerPrefs.GetInt("SpeedLevel");
-            _speedLevelImage.sprite = OxygenLevelImages[coinScript.speedLevel - 1].sprite;
+            _speedLevelImage.sprite = SpeedLevelImages[coinScript.speedLevel - 1].sprite;
 
         }
         else
         {
             coinScript.speedLevel = 1;
-            _speedLevelImage.sprite = OxygenLevelImages[0].sprite;
+            _speedLevelImage.sprite = SpeedLevelImages[0].sprite;
 
         }
         if ((PlayerPrefs.HasKey("Speed")))
@@ -89,26 +89,26 @@ public class CoinSystem : MonoBehaviour
 
         //Speed ***************
 
-        if ((PlayerPrefs.HasKey("HP")))
+        if ((PlayerPrefs.HasKey("HPLevel")))
         {
-            coinScript.speedLevel = PlayerPrefs.GetInt("HPLevel");
+            coinScript.hpLevel = PlayerPrefs.GetInt("HPLevel");
             _hpLevelImage.sprite = HPLevelImages[coinScript.hpLevel - 1].sprite;
 
         }
         else
         {
-            coinScript.speedLevel = 1;
-            _speedLevelImage.sprite = OxygenLevelImages[0].sprite;
+            coinScript.hpLevel = 1;
+            _hpLevelImage.sprite = HPLevelImages[0].sprite;
 
         }
-        if ((PlayerPrefs.HasKey("Speed")))
+        if ((PlayerPrefs.HasKey("HP")))
         {
-            coinScript.realSpeed = PlayerPrefs.GetInt("Speed");
+            coinScript.realHP = PlayerPrefs.GetInt("HP");
 
         }
         else
         {
-            coinScript.realSpeed = realSpeed[0];
+            coinScript.realHP = realHP[0];
 
         }
     }
@@ -212,7 +212,7 @@ public class CoinSystem : MonoBehaviour
         //Speed ***************
 
         //----------------------------------
-        _hpLevelText.text = "Speed Level: " + coinScript.speedLevel;
+        _hpLevelText.text = "HP Level: " + coinScript.hpLevel;
         if (coinScript.hpLevel > 1)
         {
             _hpLevelImage.sprite = HPLevelImages[coinScript.hpLevel - 1].sprite;
@@ -225,7 +225,7 @@ public class CoinSystem : MonoBehaviour
         if (coinScript.hpLevel == 4)
         {
             _hpCoinImage.enabled = false;
-            _hpPriceText.text = "Your Speed Level Is At Max";
+            _hpPriceText.text = "Your HP Level Is At Max";
         }
         else
         {

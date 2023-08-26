@@ -49,12 +49,12 @@ public class SaveCoin : MonoBehaviour
         }
         if ((PlayerPrefs.HasKey("HP")))
         {
-            hpLevel = PlayerPrefs.GetInt("HP");
-            health.SubmarineHealth = hpLevel;
+            realHP = PlayerPrefs.GetInt("HP");
+            health.SubmarineHealth = realHP;
         }
         else
         {
-            hpLevel = realHPList[0];
+            realHP = realHPList[0];
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
