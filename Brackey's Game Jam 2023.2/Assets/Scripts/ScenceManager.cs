@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class SceneManagerScript : MonoBehaviour
     }
     IEnumerator WaitForAnimation()
     {
-
         yield return new WaitForSeconds(2);
         SceneManager.LoadScene(1);
 
