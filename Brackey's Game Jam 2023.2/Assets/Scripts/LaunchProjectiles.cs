@@ -15,7 +15,7 @@ public class LaunchProjectiles : MonoBehaviour
 	Vector2 startPoint;
 
 	[SerializeField] float radius, moveSpeed;
-
+	[SerializeField] float cooldown = 5f;
 	// Use this for initialization
 	void Start()
 	{
@@ -31,7 +31,15 @@ public class LaunchProjectiles : MonoBehaviour
 
 	private void Update()
     {
-		
+		if (cooldown > 0)
+		{
+			cooldown -= Time.deltaTime;
+		}
+		if(cooldown <= 0)
+        {
+			Fire();
+			cooldown = 10;
+		}
 	}
 
     void SpawnProjectiles(int numberOfProjectiles)
@@ -53,7 +61,7 @@ public class LaunchProjectiles : MonoBehaviour
 				new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
 
 			angle += angleStep;
-			Destroy(proj, 1f);
+			Destroy(proj, 4.7f);
 		}
 	}
 
