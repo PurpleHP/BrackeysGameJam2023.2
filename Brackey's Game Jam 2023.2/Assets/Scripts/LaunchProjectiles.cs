@@ -8,7 +8,7 @@ public class LaunchProjectiles : MonoBehaviour
 	[SerializeField]
 	int numberOfProjectiles;
 
-	private int[] numOfProjList = { 30, 45, 60 };
+	private int[] numOfProjList = { 45, 60, 72 };
 	private int index = 0;
 	[SerializeField] GameObject purpleBoss;
 	[SerializeField]
