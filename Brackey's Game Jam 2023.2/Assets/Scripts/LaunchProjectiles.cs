@@ -8,6 +8,8 @@ public class LaunchProjectiles : MonoBehaviour
 	[SerializeField]
 	int numberOfProjectiles;
 
+	private int[] numOfProjList = { 30, 45, 60 };
+	private int index = 0;
 	[SerializeField] GameObject purpleBoss;
 	[SerializeField]
 	GameObject projectile;
@@ -15,18 +17,28 @@ public class LaunchProjectiles : MonoBehaviour
 	Vector2 startPoint;
 
 	[SerializeField] float radius, moveSpeed;
-	[SerializeField] float cooldown = 5f;
-	// Use this for initialization
+	[SerializeField] float cooldown = 4f;
+	private float currentCooldown;
+
 	void Start()
 	{
+		currentCooldown = cooldown;
 		radius = 10f;
-		moveSpeed = 10;
+		moveSpeed = 20;
 	}
 
 	public void Fire()
 	{
 		startPoint = purpleBoss.transform.position;
-		SpawnProjectiles(numberOfProjectiles);
+		SpawnProjectiles(numOfProjList[index]);
+		if(index+1 == numOfProjList.Length)
+        {
+			index = 0;
+        }
+        else
+        {
+			index++;
+        }
 	}
 
 	private void Update()
@@ -37,8 +49,8 @@ public class LaunchProjectiles : MonoBehaviour
 		}
 		if(cooldown <= 0)
         {
+			cooldown = currentCooldown;
 			Fire();
-			cooldown = 10;
 		}
 	}
 
@@ -61,7 +73,7 @@ public class LaunchProjectiles : MonoBehaviour
 				new Vector2(projectileMoveDirection.x, projectileMoveDirection.y);
 
 			angle += angleStep;
-			Destroy(proj, 4.7f);
+			Destroy(proj, cooldown-0.2f);
 		}
 	}
 
