@@ -11,9 +11,9 @@ GameObject:
   - component: {fileID: 576165765485222375}
   - component: {fileID: 2947888897423184960}
   - component: {fileID: 1777014966687856801}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Square
-  m_TagString: Enemy
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

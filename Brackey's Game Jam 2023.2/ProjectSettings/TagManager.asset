@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - Bullet
   - Checkpoint
+  - Projectile
   layers:
   - Default
   - TransparentFX

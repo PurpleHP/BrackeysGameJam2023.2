@@ -50,7 +50,7 @@ public class Health : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && CanBeUsed)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed)
         {
             //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
@@ -58,7 +58,7 @@ public class Health : MonoBehaviour
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy") && CanBeUsed)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed)
         {
             //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());

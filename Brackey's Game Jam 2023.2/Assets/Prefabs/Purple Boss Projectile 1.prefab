@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3865475530116053402}
   m_Layer: 8
   m_Name: Purple Boss Projectile 1
-  m_TagString: Enemy
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

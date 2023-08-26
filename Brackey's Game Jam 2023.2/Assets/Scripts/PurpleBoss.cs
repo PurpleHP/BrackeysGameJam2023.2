@@ -6,9 +6,10 @@ using UnityEngine.SceneManagement;
 public class PurpleBoss : MonoBehaviour
 {
     [SerializeField] public float purpleBossHealth;
-
+    [SerializeField] private GameObject submarine;
     IEnumerator StartCutScene()
     {
+        submarine.SetActive(false);
         yield return new WaitForSeconds(3);
         SceneManager.LoadScene(3);
     }
