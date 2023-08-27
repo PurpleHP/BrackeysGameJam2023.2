@@ -106,7 +106,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2024334515584079685}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.8, y: -31.8, z: 0}
   m_LocalScale: {x: 4, y: 4, z: 1}
   m_ConstrainProportionsScale: 0
@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c71fc7efb0577b48bc46e1320980780, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 3869135665090294664, guid: 781ff7656db690041a80df81bc74d2a8, type: 3}
   speed: 4
   distanceBetween: 14
   enemyScale: 4
@@ -207,8 +207,9 @@ MonoBehaviour:
   health: 4
   box2d1: {fileID: 2329081226191998162}
   box2d2: {fileID: 5095001854209830267}
-  coinPrefab: {fileID: 4098043250691050698, guid: 30c9b4ff90c34e1439ab0492363b292b, type: 3}
+  coinPrefab: {fileID: 7476350766050298487, guid: da2a0d5ff0fcc834290589c1e873b50b, type: 3}
   enemyType: jellyfish
+  objectId: 0
 --- !u!61 &2329081226191998162
 BoxCollider2D:
   m_ObjectHideFlags: 0
