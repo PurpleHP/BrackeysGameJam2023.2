@@ -33,21 +33,34 @@ public class PurpleBossBeam : MonoBehaviour
                     timer = 20f;
                 }
             }
+            else
+            {
+                laser.GetComponent<SpriteRenderer>().enabled = false;
+                laser.GetComponent<BoxCollider2D>().enabled = false;
+
+            }
         }
+
         
     }
     IEnumerator RotateForSeconds(float seconds)
     {
-        laserIsRotating = true;
-        var proj = Instantiate(laser, purpleBoss.transform.position, Quaternion.identity);
-        float elapsedTime = 0f;
-        while (elapsedTime < seconds)
+        if(boss.purpleBossHealth > 0)
         {
-            proj.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            laserIsRotating = true;
+            var proj = Instantiate(laser, purpleBoss.transform.position, Quaternion.identity);
+            float elapsedTime = 0f;
+            while ((elapsedTime < seconds) && (boss.purpleBossHealth > 0))
+            {
+
+                proj.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            Destroy(proj);
+            laserIsRotating = false;
+
         }
-        Destroy(proj);
-        laserIsRotating = false;
+       
     }
 }

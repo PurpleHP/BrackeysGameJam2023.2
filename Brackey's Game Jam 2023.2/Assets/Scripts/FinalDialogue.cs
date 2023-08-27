@@ -32,14 +32,12 @@ public class FinalDialogue : MonoBehaviour
         StartDialogue();
         StartCoroutine(ShowButtons());
     }
-    void Update()
-    {
-    }
+
     IEnumerator ShowButtons()
     {
         yield return new WaitForSeconds(15);
         textForTime.enabled = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
         resetButton.SetActive(true);
         menuButton.SetActive(true);
     }

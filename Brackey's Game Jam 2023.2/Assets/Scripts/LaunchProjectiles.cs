@@ -12,7 +12,7 @@ public class LaunchProjectiles : MonoBehaviour
 	[SerializeField] GameObject purpleBoss;
 	[SerializeField] GameObject projectile;
 	[SerializeField] PurpleBossRoom purpleRoom;
-
+	[SerializeField] PurpleBoss boss;
 	private float angle = 0f;
 
 
@@ -31,16 +31,27 @@ public class LaunchProjectiles : MonoBehaviour
 
 	public void Fire()
 	{
-		startPoint = purpleBoss.transform.position;
-		SpawnProjectiles(numOfProjList[index]);
-		if(index+1 == numOfProjList.Length)
+		if(boss.purpleBossHealth > 0)
         {
-			index = 0;
-        }
+			startPoint = purpleBoss.transform.position;
+			SpawnProjectiles(numOfProjList[index]);
+			if (index + 1 == numOfProjList.Length)
+			{
+				index = 0;
+			}
+			else
+			{
+				index++;
+			}
+		}
         else
         {
-			index++;
-        }
+			moveSpeed = 0;
+			projectile.GetComponent<SpriteRenderer>().enabled = false;
+			projectile.GetComponent<CircleCollider2D>().enabled = false;
+
+		}
+
 	}
 
 	private void Update()
