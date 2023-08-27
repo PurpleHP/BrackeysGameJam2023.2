@@ -9,7 +9,10 @@ public class DestroyCoin : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerPrefs.SetInt($"{objectId}", 0);
+            if(objectId != 0)
+            {
+                PlayerPrefs.SetInt($"{objectId}", 0);
+            }
             Destroy(gameObject);
         }
     }

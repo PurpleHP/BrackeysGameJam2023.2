@@ -6,7 +6,7 @@ public class SavePlayerPrefs : MonoBehaviour
 {
     [SerializeField] private float objectId;
 
-    private void Awake()
+    private void Start()
     {
         if (PlayerPrefs.HasKey($"{objectId}"))
         {
