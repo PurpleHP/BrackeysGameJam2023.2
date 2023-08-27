@@ -27,7 +27,6 @@ public class GreenBoss : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(health);
         distance = Vector2.Distance(transform.position, player.transform.position);
         Vector2 direction = player.transform.position - transform.position;
         direction.Normalize();
@@ -56,15 +55,6 @@ public class GreenBoss : MonoBehaviour
         anim.SetTrigger("isDead");
         yield return new WaitForSeconds(3);
         isDead = true;
-        if(gameObject.name == "GreenBoss1")
-        {
-            PlayerPrefs.SetInt("10.02", 0);
-
-        }
-        else if (gameObject.name == "GreenBoss1")
-        {
-            PlayerPrefs.SetInt("10.03", 0);
-        }
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -75,6 +65,18 @@ public class GreenBoss : MonoBehaviour
             sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
+                if(gameObject.name == "GreenBoss1")
+                {
+                    PlayerPrefs.SetFloat("GreenBoss1", 0);
+
+                }
+                else if(gameObject.name == "GreenBoss2")
+                {
+                    PlayerPrefs.SetFloat("GreenBoss2", 0);
+
+                }
+                PlayerPrefs.Save();
+
                 finalShot = true;
                 room.isOnGreenBoss = false;
                 speed = 0;

@@ -16,6 +16,7 @@ public class GreenBossMain : MonoBehaviour
     [SerializeField] public GameObject child1;
     [SerializeField] public GameObject child2;
 
+
     [SerializeField] PlaySound sfx;
 
 
@@ -58,8 +59,6 @@ public class GreenBossMain : MonoBehaviour
         anim.SetTrigger("isDead");
         yield return new WaitForSeconds(3);
         isDead = true;
-        PlayerPrefs.SetInt("GreenTrigger", 0);
-        PlayerPrefs.SetInt("10.01", 0);
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -70,13 +69,14 @@ public class GreenBossMain : MonoBehaviour
             sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
+                PlayerPrefs.SetFloat("GreeBoss", 0);
+                PlayerPrefs.Save();
                 finalShot = true;
                 room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
                 sfx.PlayBossDeath();
-
                 StartCoroutine(WaitTillBossDeath());
 
             }

@@ -111,6 +111,7 @@ public class CoinSystem : MonoBehaviour
             coinScript.realHP = realHP[0];
 
         }
+        PlayerPrefs.Save();
     }
 
     public void CanBuyOxygen()
@@ -122,6 +123,8 @@ public class CoinSystem : MonoBehaviour
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - oxygenLevelCost[coinScript.oxygenLevel]);
                 coinScript.oxygenLevel++;
                 PlayerPrefs.SetInt("Oxygen", coinScript.oxygenLevel);
+                PlayerPrefs.Save();
+
             }
         }
         
@@ -137,6 +140,7 @@ public class CoinSystem : MonoBehaviour
                 coinScript.realSpeed = realSpeed[coinScript.speedLevel - 1];
                 PlayerPrefs.SetInt("SpeedLevel", coinScript.speedLevel);
                 PlayerPrefs.SetInt("Speed", coinScript.realSpeed);
+                PlayerPrefs.Save();
 
             }
         }
@@ -153,6 +157,7 @@ public class CoinSystem : MonoBehaviour
                 coinScript.realHP = realHP[coinScript.hpLevel-1];
                 PlayerPrefs.SetInt("HPLevel", coinScript.hpLevel);
                 PlayerPrefs.SetInt("HP", coinScript.realHP);
+                PlayerPrefs.Save();
 
             }
         }

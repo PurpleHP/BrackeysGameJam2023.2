@@ -69,13 +69,13 @@ public class Enemy : MonoBehaviour
             {
                 Instantiate(coinPrefab, transform.position, Quaternion.identity);
                 PlayerPrefs.SetInt($"{objectId}", 0);
+                PlayerPrefs.Save();
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
                 anim.SetTrigger(enemyType + "IsDead");
                 sfx.PlayEnemyDeath();
                 StartCoroutine(Death());
-
             }
             else if (health > 0)
             {

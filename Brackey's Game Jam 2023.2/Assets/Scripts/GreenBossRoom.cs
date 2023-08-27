@@ -6,12 +6,22 @@ public class GreenBossRoom : MonoBehaviour
 {
     [SerializeField] PolygonCollider2D exit;
     [SerializeField] PolygonCollider2D enter;
+    [SerializeField] PolygonCollider2D trigger;
+
     [SerializeField] GreenBossMain greenBoss;
     public bool isOnGreenBoss = false;
+    private bool isOn = false;
+
+    private void Start()
+    {
+
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
+            PlayerPrefs.SetFloat("GreenTrigger", 1);
+            PlayerPrefs.Save();
             isOnGreenBoss = true;
             enter.isTrigger = false;
             exit.isTrigger = false;
@@ -20,14 +30,14 @@ public class GreenBossRoom : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerPrefs.HasKey("GreenTrigger"))
+        if (PlayerPrefs.GetFloat("GreenTrigger") == 0)
         {
-            if (PlayerPrefs.GetInt("GreenTrigger") == 0)
-            {
-                exit.isTrigger = true;
-                enter.isTrigger = true;
-            }
+            trigger.enabled = false;
+            enter.enabled = false;
+            exit.enabled = false;
+            gameObject.SetActive(false);
         }
-        
+                
+          
     }
 }
