@@ -31,50 +31,51 @@ public class LaunchProjectiles : MonoBehaviour
 
 	public void Fire()
 	{
-		if(boss.purpleBossHealth > 0)
-        {
-			startPoint = purpleBoss.transform.position;
-			SpawnProjectiles(numOfProjList[index]);
-			if (index + 1 == numOfProjList.Length)
-			{
-				index = 0;
-			}
-			else
-			{
-				index++;
-			}
-		}
-        else
-        {
-			moveSpeed = 0;
-			projectile.GetComponent<SpriteRenderer>().enabled = false;
-			projectile.GetComponent<CircleCollider2D>().enabled = false;
 
+		startPoint = purpleBoss.transform.position;
+		SpawnProjectiles(numOfProjList[index]);
+		if (index + 1 == numOfProjList.Length)
+		{
+			index = 0;
+		}
+		else
+		{
+			index++;
 		}
 
 	}
 
 	private void Update()
-    {
-        if (purpleRoom.isOnPurpleBoss)
+	{
+		if (boss.purpleBossHealth > 0)
         {
-			if (cooldown > 0)
+			if (purpleRoom.isOnPurpleBoss)
 			{
-				cooldown -= Time.deltaTime;
-			}
-			if (cooldown <= 0)
-			{
-				cooldown = currentCooldown;
-				if (angle <= 345)
+				if (cooldown > 0)
 				{
-					angle += 15;
+					cooldown -= Time.deltaTime;
 				}
-				else
+				else if (cooldown <= 0)
 				{
-					angle = angle % 360;
+					cooldown = currentCooldown;
+					if (angle <= 345)
+					{
+						angle += 15;
+					}
+					else
+					{
+						angle = angle % 360;
+					}
+					Fire();
 				}
-				Fire();
 			}
+		}
+		else
+		{
+			moveSpeed = 0;
+			projectile.GetComponent<SpriteRenderer>().enabled = false;
+			projectile.GetComponent<CircleCollider2D>().enabled = false;
+
 		}
 	}
 

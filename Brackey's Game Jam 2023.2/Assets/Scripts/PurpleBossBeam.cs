@@ -21,22 +21,26 @@ public class PurpleBossBeam : MonoBehaviour
     {
         if (purpleRoom.isOnPurpleBoss)
         {
-            if (boss.purpleBossHealth > 0)
+            if (timer > 0)
             {
-                if (timer > 0)
-                {
-                    timer -= Time.deltaTime;
-                }
-                else
-                {
-                    StartCoroutine(RotateForSeconds(rotationDuration));
-                    timer = 20f;
-                }
+                timer -= Time.deltaTime;
             }
             else
             {
+                StartCoroutine(RotateForSeconds(rotationDuration));
+                timer = 20f;
+            }
+            
+            if (boss.purpleBossHealth <= 0)
+            {
                 laser.GetComponent<SpriteRenderer>().enabled = false;
                 laser.GetComponent<BoxCollider2D>().enabled = false;
+
+            }
+            else
+            {
+                laser.GetComponent<SpriteRenderer>().enabled = true;
+                laser.GetComponent<BoxCollider2D>().enabled = true;
 
             }
         }
@@ -45,22 +49,18 @@ public class PurpleBossBeam : MonoBehaviour
     }
     IEnumerator RotateForSeconds(float seconds)
     {
-        if(boss.purpleBossHealth > 0)
+
+        laserIsRotating = true;
+        var proj = Instantiate(laser, purpleBoss.transform.position, Quaternion.identity);
+        float elapsedTime = 0f;
+        while ((elapsedTime < seconds) && (boss.purpleBossHealth > 0))
         {
-            laserIsRotating = true;
-            var proj = Instantiate(laser, purpleBoss.transform.position, Quaternion.identity);
-            float elapsedTime = 0f;
-            while ((elapsedTime < seconds) && (boss.purpleBossHealth > 0))
-            {
-
-                proj.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-            Destroy(proj);
-            laserIsRotating = false;
-
+            proj.transform.Rotate(0, 0, rotationSpeed * Time.deltaTime);
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-       
+        Destroy(proj);
+        laserIsRotating = false;
+    
     }
 }

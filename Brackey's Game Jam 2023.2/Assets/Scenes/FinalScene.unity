@@ -953,6 +953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _oxygenCoinImage: {fileID: 0}
+  sceneTransition: {fileID: 820324834}
 --- !u!114 &820324834
 MonoBehaviour:
   m_ObjectHideFlags: 0

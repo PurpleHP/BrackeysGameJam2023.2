@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class ResetMoneyTest : MonoBehaviour
 {
     [SerializeField] private Image _oxygenCoinImage;
+    [SerializeField] SceneManagerScript sceneTransition;
+
+    /*
     public void ResetOxygen()
     {
         PlayerPrefs.DeleteKey("Oxygen");
@@ -25,9 +28,12 @@ public class ResetMoneyTest : MonoBehaviour
     {
         PlayerPrefs.SetInt("Coins", 3169);
     }
+    */
 
     public void DeleteEveryKey()
     {
         PlayerPrefs.DeleteAll();
+        sceneTransition.MainMenu();
+
     }
 }
