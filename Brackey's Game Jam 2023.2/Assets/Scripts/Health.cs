@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
     [SerializeField] float pushForce;
     private Rigidbody2D rb;
 
+    [SerializeField] SceneManagerScript sceneTransition;
+
+
     private int[] realHP = { 3,4,5,6 };
     private void Awake()
     {
@@ -33,7 +36,9 @@ public class Health : MonoBehaviour
         _healthText.text = SubmarineHealth.ToString();
         if(SubmarineHealth <= 0)
         {
-            SceneManager.LoadScene(1);
+
+            sceneTransition.GameScence();
+
         }
     }
     private bool CanBeUsed = true;
