@@ -50,7 +50,7 @@ public class SaveCoin : MonoBehaviour
         if ((PlayerPrefs.HasKey("HP")))
         {
             realHP = PlayerPrefs.GetInt("HP");
-            health.SubmarineHealth = realHP;
+       
         }
         else
         {

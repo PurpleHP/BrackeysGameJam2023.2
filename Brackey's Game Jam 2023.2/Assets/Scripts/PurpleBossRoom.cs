@@ -7,14 +7,17 @@ public class PurpleBossRoom : MonoBehaviour
     public bool isOnPurpleBoss = false;
     //[SerializeField] PolygonCollider2D exit;
     [SerializeField] BoxCollider2D enter;
-    void Start()
-    {
-        
-    }
+
 
     void Update()
     {
-        
+        if (PlayerPrefs.HasKey("PurpleTrigger"))
+        {
+            if (PlayerPrefs.GetInt("PurpleTrigger") == 0)
+            {
+                enter.isTrigger = true;
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,8 +25,12 @@ public class PurpleBossRoom : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isOnPurpleBoss = true;
-            enter.isTrigger = false;
-            //exit.isTrigger = false;
+            if (PlayerPrefs.GetInt("PurpleTrigger") != 0)
+            {
+                enter.isTrigger = false;
+
+            }
+
         }
     }
 }

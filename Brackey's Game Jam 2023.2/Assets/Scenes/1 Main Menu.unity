@@ -2012,6 +2012,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   totalTimer: 0
+  sfx: {fileID: 0}
   fader: {fileID: 0}
 --- !u!1 &658534249
 GameObject:
@@ -2175,8 +2176,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0044861, y: -0.0010376}
-  m_SizeDelta: {x: 1920.1, y: 1080}
+  m_AnchoredPosition: {x: -0.0044, y: -0.0010376}
+  m_SizeDelta: {x: 3125.6592, y: 1977.4722}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &673474890
 MonoBehaviour:
@@ -3052,23 +3053,23 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Game made by PurpleHP and GreenHP
 
-    Both some of the sprites, UI 
-    elements etc. are made by ourselves.
+    Both some of the sprites, UI  elements
+    etc. are made by ourselves.
 
 
-    Enemies: Octopus, Jellyfish, Shark
-    and Turtle Free Sprite Pixel Art / CraftPix.net
+    Enemies: Octopus, Jellyfish, Shark and Turtle
+    Free Sprite Pixel Art / CraftPix.net
 
 
-    Boss: Floating Skull Enemy
-    by unTied Games
+    Boss: Floating Skull Enemy by unTied
+    Games
 
 
     Environment: Underwater Diving by ansimuz
 
 
-    Environment:
-    Szadi art''s assets
+    Environment: Szadi
+    art''s assets
 
 
     Environment: Ocean and Clouds Free Pixel Art Backgrounds
@@ -7080,6 +7081,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   totalTimer: 0
+  sfx: {fileID: 0}
   fader: {fileID: 673474889}
 --- !u!1 &1924743097
 GameObject:

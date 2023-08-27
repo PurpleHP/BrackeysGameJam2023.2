@@ -44,7 +44,6 @@ public class Health : MonoBehaviour
             gameObject.GetComponent<BoxCollider2D>().enabled = false;
             gameObject.GetComponent<CircleCollider2D>().enabled = false;
             sceneTransition.PlayerDeath();
-
         }
     }
     private bool CanBeUsed = true;

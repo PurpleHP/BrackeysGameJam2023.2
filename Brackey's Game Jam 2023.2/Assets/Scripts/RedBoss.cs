@@ -8,18 +8,26 @@ public class RedBoss : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float distanceBetween;
     [SerializeField] private float enemyScale;
-    [SerializeField] public float maxHealth;
-    [SerializeField] private float health;
     [SerializeField] GameObject dialoguePanel;
     
+
+
     private Animator anim;
     public bool isDead = false;
     private float distance;
 
     private void Awake()
     {
-        health = maxHealth;
         anim = GetComponent<Animator>();
+        if (PlayerPrefs.HasKey("10.1"))
+        {
+            if(PlayerPrefs.GetFloat("10.1") == 0)
+            {
+                speed = 0;
+                gameObject.SetActive(false);
+
+            }
+        }
     }
     void Update()
     {

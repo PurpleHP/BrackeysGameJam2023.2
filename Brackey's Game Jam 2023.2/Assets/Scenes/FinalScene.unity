@@ -968,6 +968,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 0}
   totalTimer: 0
+  sfx: {fileID: 0}
   fader: {fileID: 329421301}
 --- !u!1 &896847493
 GameObject:
@@ -1410,7 +1411,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0.00079345703, y: -0.00030517578}
-  m_SizeDelta: {x: 4306.1, y: 2421.9}
+  m_SizeDelta: {x: 8128.4014, y: 5722.9795}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1945122503
 MonoBehaviour:

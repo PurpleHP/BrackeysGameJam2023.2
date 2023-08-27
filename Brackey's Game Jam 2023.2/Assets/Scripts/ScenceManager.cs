@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 
 public class SceneManagerScript : MonoBehaviour
 {
@@ -62,7 +61,7 @@ public class SceneManagerScript : MonoBehaviour
         animator.SetBool("IsButtonPressed", true); //???
         fader.gameObject.SetActive(true);
 
-        LeanTween.alpha(fader, 0, 0);
+        LeanTween.alpha(fader, 1, 0);
         LeanTween.alpha(fader, 1, 1f).setOnComplete(() => {
             // Example for little pause before laoding the next scene
             Invoke("LoadGame", 1f);

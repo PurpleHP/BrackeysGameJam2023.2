@@ -13,9 +13,20 @@ public class PurpleBoss : MonoBehaviour
     [SerializeField] public float purpleBossHealth;
     [SerializeField] private GameObject submarine;
 
+    [SerializeField] PlaySound sfx;
+
+
     private void Start()
     {
         anim = GetComponent<Animator>();
+        if (PlayerPrefs.HasKey("10.2"))
+            {
+                if (PlayerPrefs.GetFloat("10.2") == 0)
+                {
+                    gameObject.SetActive(false);
+
+                }
+            }
     }
     IEnumerator StartCutScene()
     {
@@ -23,7 +34,9 @@ public class PurpleBoss : MonoBehaviour
         purpleBoss2.enabled = false;
         submarine.SetActive(false);
         anim.SetTrigger("IsDead");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
+        sfx.PlayBossDeath();
+        yield return new WaitForSeconds(1.5f);
         sceneTransition.FinalScene();
     }
 
@@ -32,8 +45,11 @@ public class PurpleBoss : MonoBehaviour
         if (collision.CompareTag("Bullet"))
         {
             purpleBossHealth--;
-            if(purpleBossHealth == 0)
+            sfx.PlayEnemyHit();
+            if (purpleBossHealth == 0)
             {
+                PlayerPrefs.SetFloat("10.2",0);
+                PlayerPrefs.SetFloat("PurpleTrigger", 0);
                 StartCoroutine(StartCutScene());
                 
             }

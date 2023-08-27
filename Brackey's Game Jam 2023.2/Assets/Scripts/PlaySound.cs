@@ -37,7 +37,7 @@ public class PlaySound : MonoBehaviour
         src.clip = coinCollect;
         src.Play();
     }
-    public void BossDeath()
+    public void PlayBossDeath()
     {
         src.clip = bossDeath;
         src.Play();

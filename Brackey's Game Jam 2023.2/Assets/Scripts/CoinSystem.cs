@@ -33,7 +33,7 @@ public class CoinSystem : MonoBehaviour
 
     //Speed **************
 
-    private int[] hpLevelCost = { 0, 15, 15, 15 };
+    private int[] hpLevelCost = { 0, 15, 16, 17 };
     private int[] realHP = { 3,4,5,6 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _hpLevelText;
     [SerializeField] private TextMeshProUGUI _hpPriceText;
@@ -150,7 +150,7 @@ public class CoinSystem : MonoBehaviour
             {
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - hpLevelCost[coinScript.hpLevel]);
                 coinScript.hpLevel++;
-                coinScript.realHP = realHP[coinScript.hpLevel - 1];
+                coinScript.realHP = realHP[coinScript.hpLevel-1];
                 PlayerPrefs.SetInt("HPLevel", coinScript.hpLevel);
                 PlayerPrefs.SetInt("HP", coinScript.realHP);
 

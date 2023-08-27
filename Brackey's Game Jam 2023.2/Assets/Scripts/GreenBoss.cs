@@ -17,6 +17,9 @@ public class GreenBoss : MonoBehaviour
     public bool isDead = false;
     private float distance;
     private bool finalShot = false;
+
+    [SerializeField] PlaySound sfx;
+
     private void Awake()
     {
         health = maxHealth;
@@ -53,6 +56,15 @@ public class GreenBoss : MonoBehaviour
         anim.SetTrigger("isDead");
         yield return new WaitForSeconds(3);
         isDead = true;
+        if(gameObject.name == "GreenBoss1")
+        {
+            PlayerPrefs.SetInt("10.02", 0);
+
+        }
+        else if (gameObject.name == "GreenBoss1")
+        {
+            PlayerPrefs.SetInt("10.03", 0);
+        }
         Destroy(gameObject);
     }
     private void OnTriggerEnter2D(Collider2D collision)
@@ -60,6 +72,7 @@ public class GreenBoss : MonoBehaviour
         if (collision.CompareTag("Bullet"))
         {
             health--;
+            sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
                 finalShot = true;
@@ -67,6 +80,7 @@ public class GreenBoss : MonoBehaviour
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
+                sfx.PlayBossDeath();
                 StartCoroutine(WaitTillBossDeath());
 
             }

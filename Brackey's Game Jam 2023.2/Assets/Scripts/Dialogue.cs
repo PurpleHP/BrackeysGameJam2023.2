@@ -216,6 +216,7 @@ public class Dialogue : MonoBehaviour
         if(index == 23 && coinScript.oxygenLevel >= 3)
         {
             lines[index + 1] = "The answer was.....  CORRECT! And you also seem to have enough oxygen level to DIVE DEEPER!";
+            PlayerPrefs.SetFloat("10.1", 0);
         }
         else if (index == 23 && coinScript.oxygenLevel < 3){
             lines[index + 1] = "The answer was.....  CORRECT! But you don't have enough oxygen level (3) to DIVE DEEPER :( Come back when you are ready";
@@ -268,8 +269,9 @@ public class Dialogue : MonoBehaviour
         }
         if (index == 23  && coinScript.oxygenLevel >= 3)
         {
-            lines[index + 1] = "The answer was.....  NOT CORRECT... But don't worry you have enough oxygen level (the correct answers were both 3 and 4) so you can continue :)";
 
+            lines[index + 1] = "The answer was.....  NOT CORRECT... But don't worry you have enough oxygen level (the correct answers were both 3 and 4) so you can continue :)";
+            PlayerPrefs.SetFloat("10.1", 0);
         }
         else if(index == 23 && coinScript.oxygenLevel < 3)
         {
