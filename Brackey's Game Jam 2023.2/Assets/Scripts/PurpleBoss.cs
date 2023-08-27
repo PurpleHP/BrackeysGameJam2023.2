@@ -5,13 +5,26 @@ using UnityEngine.SceneManagement;
 
 public class PurpleBoss : MonoBehaviour
 {
+    [SerializeField] SceneManagerScript sceneTransition;
+    [SerializeField] CircleCollider2D purpleBoss1;
+    [SerializeField] CircleCollider2D purpleBoss2;
+
+    private Animator anim;
     [SerializeField] public float purpleBossHealth;
     [SerializeField] private GameObject submarine;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     IEnumerator StartCutScene()
     {
+        purpleBoss1.enabled = false;
+        purpleBoss2.enabled = false;
         submarine.SetActive(false);
-        yield return new WaitForSeconds(3);
-        SceneManager.LoadScene(3);
+        anim.SetTrigger("IsDead");
+        yield return new WaitForSeconds(2);
+        sceneTransition.FinalScene();
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -22,6 +35,7 @@ public class PurpleBoss : MonoBehaviour
             if(purpleBossHealth == 0)
             {
                 StartCoroutine(StartCutScene());
+                
             }
         }
     }
