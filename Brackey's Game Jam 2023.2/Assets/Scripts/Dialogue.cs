@@ -54,7 +54,6 @@ public class Dialogue : MonoBehaviour
     }
     void Update()
     {
-        Debug.Log(index);
     }
 
     public void SkipDialogue()
