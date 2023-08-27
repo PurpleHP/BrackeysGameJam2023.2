@@ -10,6 +10,9 @@ public class SceneManagerScript : MonoBehaviour
 
     public float totalTimer;
 
+    [SerializeField] PlaySound sfx;
+
+
     [SerializeField] RectTransform fader;
     private void Start()
     {
@@ -31,7 +34,6 @@ public class SceneManagerScript : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(totalTimer);
         if(SceneManager.GetActiveScene().name != "FinalScene")
         {
             totalTimer += Time.deltaTime;
@@ -61,14 +63,27 @@ public class SceneManagerScript : MonoBehaviour
         fader.gameObject.SetActive(true);
 
         LeanTween.alpha(fader, 0, 0);
-        LeanTween.alpha(fader, 1, 1.2f).setOnComplete(() => {
+        LeanTween.alpha(fader, 1, 1f).setOnComplete(() => {
             // Example for little pause before laoding the next scene
-            Invoke("LoadGame", 1.2f);
+            Invoke("LoadGame", 1f);
         });
 
 
     }
 
+    public void PlayerDeath()
+    {
+        fader.gameObject.SetActive(true);
+        sfx.PlayDeath();
+
+        LeanTween.alpha(fader, 0, 0);
+        LeanTween.alpha(fader, 1, 0.5f).setOnComplete(() => {
+            // Example for little pause before laoding the next scene
+            Invoke("LoadGame", 1f);
+        });
+
+
+    }
     public void ShopMenu()
     {
         fader.gameObject.SetActive(true);

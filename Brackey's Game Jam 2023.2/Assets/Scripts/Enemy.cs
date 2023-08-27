@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
     private Animator anim;
     private float distance;
 
+    [SerializeField] PlaySound sfx;
+
+
     [SerializeField] private float objectId;
     private void Awake()
     {
@@ -70,12 +73,15 @@ public class Enemy : MonoBehaviour
                 box2d1.enabled = false;
                 box2d2.enabled = false;
                 anim.SetTrigger(enemyType + "IsDead");
+                sfx.PlayEnemyDeath();
                 StartCoroutine(Death());
 
             }
             else if (health > 0)
             {
                 anim.SetTrigger(enemyType + "IsHurt");
+                sfx.PlayEnemyHit();
+
             }
         }
         if (collision.CompareTag("Player"))

@@ -15,6 +15,9 @@ public class Health : MonoBehaviour
     [SerializeField] float pushForce;
     private Rigidbody2D rb;
 
+    [SerializeField] PlaySound sfx;
+
+    private bool isDead = false;
     [SerializeField] SceneManagerScript sceneTransition;
 
 
@@ -34,10 +37,13 @@ public class Health : MonoBehaviour
     void Update()
     {
         _healthText.text = SubmarineHealth.ToString();
-        if(SubmarineHealth <= 0)
+        if(SubmarineHealth == 0 && !isDead)
         {
-
-            sceneTransition.GameScence();
+            isDead = true;
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            gameObject.GetComponent<BoxCollider2D>().enabled = false;
+            gameObject.GetComponent<CircleCollider2D>().enabled = false;
+            sceneTransition.PlayerDeath();
 
         }
     }
@@ -55,16 +61,22 @@ public class Health : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed && SubmarineHealth > 0)
         {
+            sfx.PlayPlayerGotHit();
             //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
+        }
+        else if (collision.CompareTag("Coin"))
+        {
+            sfx.PlayCoin();
         }
     }
     private void OnTriggerStay2D(Collider2D collision)
     {
-        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed)
+        if ((collision.CompareTag("Enemy") || collision.CompareTag("Projectile")) && CanBeUsed && SubmarineHealth > 0)
         {
+            sfx.PlayPlayerGotHit();
             //rb.AddForce(-1 * gameObject.transform.forward * pushForce);
             StartCoroutine(WaitForCoolDown());
         }
