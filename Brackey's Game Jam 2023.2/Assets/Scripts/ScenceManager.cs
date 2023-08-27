@@ -57,11 +57,11 @@ public class SceneManagerScript : MonoBehaviour
 
     public void GameScence()
     {
-        //animator.SetBool("IsButtonPressed", true); //???
+        animator.SetBool("IsButtonPressed", true); //???
         fader.gameObject.SetActive(true);
 
         LeanTween.alpha(fader, 0, 0);
-        LeanTween.alpha(fader, 1, 0.5f).setOnComplete(() => {
+        LeanTween.alpha(fader, 1, 1.2f).setOnComplete(() => {
             // Example for little pause before laoding the next scene
             Invoke("LoadGame", 1.2f);
         });
