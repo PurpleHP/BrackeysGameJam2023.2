@@ -12,7 +12,7 @@ public class CoinSystem : MonoBehaviour
 
     //Oxygen ***************
 
-    private int[] oxygenLevelCost = {0, 2, 4, 6};
+    private int[] oxygenLevelCost = {0, 7, 9, 12};
     [SerializeField] private TextMeshProUGUI _oxygenLevelText;
     [SerializeField] private TextMeshProUGUI _oxygenPriceText;
     [SerializeField] private Image _oxygenCoinImage;
@@ -23,7 +23,7 @@ public class CoinSystem : MonoBehaviour
 
     //Speed ***************
 
-    private int[] speedLevelCost = { 0, 3, 5, 7 };
+    private int[] speedLevelCost = { 0, 4, 8, 13 };
     private int[] realSpeed = { 6, 7, 8, 10 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _speedLevelText;
     [SerializeField] private TextMeshProUGUI _speedPriceText;
@@ -33,7 +33,7 @@ public class CoinSystem : MonoBehaviour
 
     //Speed **************
 
-    private int[] hpLevelCost = { 0, 3, 5, 7 };
+    private int[] hpLevelCost = { 0, 15, 15, 15 };
     private int[] realHP = { 3,4,5,6 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _hpLevelText;
     [SerializeField] private TextMeshProUGUI _hpPriceText;
