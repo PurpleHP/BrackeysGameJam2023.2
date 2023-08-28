@@ -20,8 +20,7 @@ public class GreenBossRoom : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            PlayerPrefs.SetFloat("GreenTrigger", 1);
-            PlayerPrefs.Save();
+            
             isOnGreenBoss = true;
             enter.isTrigger = false;
             exit.isTrigger = false;
@@ -30,13 +29,14 @@ public class GreenBossRoom : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (PlayerPrefs.GetFloat("GreenTrigger") == 0)
         {
             trigger.enabled = false;
             enter.enabled = false;
             exit.enabled = false;
             gameObject.SetActive(false);
-        }
+        }*/
                 
           
     }

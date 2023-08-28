@@ -69,8 +69,7 @@ public class GreenBossMain : MonoBehaviour
             sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
-                PlayerPrefs.SetFloat("GreeBoss", 0);
-                PlayerPrefs.Save();
+
                 finalShot = true;
                 room.isOnGreenBoss = false;
                 speed = 0;
