@@ -68,7 +68,7 @@ public class Enemy : MonoBehaviour
             if (health <= 0)
             {
                 Instantiate(coinPrefab, transform.position, Quaternion.identity);
-                PlayerPrefs.SetInt($"{objectId}", 0);
+                PlayerPrefs.SetInt($"{objectId}", 2);
                 PlayerPrefs.Save();
                 speed = 0;
                 box2d1.enabled = false;

@@ -15,12 +15,13 @@ public class GreenBossDespawn : MonoBehaviour
 
     void Start()
     {
-        if(PlayerPrefs.HasKey("9.1") && PlayerPrefs.HasKey("9.2") && PlayerPrefs.HasKey("9.3"))
+
+        if (PlayerPrefs.HasKey("9.1") && PlayerPrefs.HasKey("9.2") && PlayerPrefs.HasKey("9.3"))
         {
-            if(PlayerPrefs.GetInt("9.1") == 0 && PlayerPrefs.GetInt("9.2") == 0 && PlayerPrefs.GetInt("9.3") == 0)
+            if(PlayerPrefs.GetInt("9.1") == 2 && PlayerPrefs.GetInt("9.2") == 2 && PlayerPrefs.GetInt("9.3") == 2)
             {
                 room.isOnGreenBoss = false;
-                PlayerPrefs.SetInt("GreeTrigger", 0);
+                PlayerPrefs.SetInt("GreeTrigger", 2);
                 Debug.Log(room.isOnGreenBoss);
             }
         }
@@ -32,30 +33,25 @@ public class GreenBossDespawn : MonoBehaviour
             PlayerPrefs.Save();
 
         }
-        if (!PlayerPrefs.HasKey("GreenTrigger"))
-        {
-            PlayerPrefs.SetInt("GreeTrigger", 1);
-        }
-        else
-        {
-            Debug.Log("buradan dolayýdýr");
-            PlayerPrefs.SetInt("GreeTrigger", 0);
-
-        }
     }
 
     private void Update()
     {
-        Debug.Log(room.isOnGreenBoss);
-        Debug.Log(PlayerPrefs.GetInt("GreenTrigger"));
+        if (PlayerPrefs.HasKey("GreenTrigger"))
+        {
+            if(PlayerPrefs.GetInt("GreenTrigger") == 2)
+            {
+                GreenBoss.SetActive(false);
+            }
+        }
 
         if (PlayerPrefs.HasKey("9.1") && PlayerPrefs.HasKey("9.2") && PlayerPrefs.HasKey("9.3") && !isDone)
         {
-            if (PlayerPrefs.GetInt("9.1") == 0 && PlayerPrefs.GetInt("9.2") == 0 && PlayerPrefs.GetInt("9.3") == 0)
+            if (PlayerPrefs.GetInt("9.1") == 2 && PlayerPrefs.GetInt("9.2") == 2 && PlayerPrefs.GetInt("9.3") == 2)
             {
                 Debug.Log("Bu yüzden 2");
                 room.isOnGreenBoss = false;
-                PlayerPrefs.SetInt("GreeTrigger", 0);
+                PlayerPrefs.SetInt("GreeTrigger", 2);
                 PlayerPrefs.Save();
                 isDone = true;
             }

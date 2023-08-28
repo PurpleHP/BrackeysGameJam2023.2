@@ -41,7 +41,7 @@ public class PurpleBoss : MonoBehaviour
             sfx.PlayEnemyHit();
             if (purpleBossHealth == 0)
             {
-                PlayerPrefs.SetFloat("PurpleTrigger", 0);
+                PlayerPrefs.SetInt("PurpleTrigger", 0);
                 StartCoroutine(StartCutScene());
                 
             }

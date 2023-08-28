@@ -8,7 +8,7 @@ public class PurpleBossRoom : MonoBehaviour
     //[SerializeField] PolygonCollider2D exit;
     [SerializeField] BoxCollider2D enter;
 
-
+    [SerializeField] PolygonCollider2D bulletBlocker;
     void Update()
     {
         if (PlayerPrefs.HasKey("PurpleTrigger"))
@@ -25,11 +25,15 @@ public class PurpleBossRoom : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             isOnPurpleBoss = true;
+            enter.isTrigger = false;
+            bulletBlocker.enabled = false;
+            /*
             if (PlayerPrefs.GetInt("PurpleTrigger") != 0)
             {
-                enter.isTrigger = false;
+                enter.isTrigger = true;
+                bulletBlocker.enabled = false;
 
-            }
+            }*/
 
         }
     }

@@ -67,12 +67,12 @@ public class GreenBoss : MonoBehaviour
             {
                 if(gameObject.name == "GreenBoss1")
                 {
-                    PlayerPrefs.SetFloat("9.2", 0);
+                    PlayerPrefs.SetInt("9.2", 2);
 
                 }
                 else if(gameObject.name == "GreenBoss2")
                 {
-                    PlayerPrefs.SetFloat("9.3", 0);
+                    PlayerPrefs.SetInt("9.3", 2);
 
                 }
                 PlayerPrefs.Save();

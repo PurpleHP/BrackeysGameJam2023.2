@@ -68,7 +68,7 @@ public class GreenBossMain : MonoBehaviour
             sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
-                PlayerPrefs.SetInt("9.1", 0);
+                PlayerPrefs.SetInt("9.1", 2);
                 PlayerPrefs.Save();
                 finalShot = true;
                 speed = 0;

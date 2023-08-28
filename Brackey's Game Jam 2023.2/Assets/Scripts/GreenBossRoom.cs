@@ -15,10 +15,6 @@ public class GreenBossRoom : MonoBehaviour
     public bool isOnGreenBoss = false;
     private bool isOn = false;
 
-    private void Start()
-    {
-
-    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
@@ -32,15 +28,17 @@ public class GreenBossRoom : MonoBehaviour
 
     private void Update()
     {
-        if ((PlayerPrefs.GetInt("GreenTrigger") == 0) && !isOn)
+        if (PlayerPrefs.HasKey("GreenTrigger"))
         {
-            trigger.enabled = false;
-            enter.enabled = false;
-            exit.enabled = false;
-            isOn = true;
-            greenBossRoom.SetActive(false);
+            if ((PlayerPrefs.GetInt("GreenTrigger") == 2))
+            {
+                trigger.enabled = false;
+                enter.enabled = false;
+                exit.enabled = false;
+                isOn = true;
+                greenBossRoom.SetActive(false);
+            }
         }
-                
           
     }
 }
