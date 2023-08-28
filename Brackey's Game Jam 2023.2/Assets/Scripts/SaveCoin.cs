@@ -65,4 +65,9 @@ public class SaveCoin : MonoBehaviour
             PlayerPrefs.SetInt("Coins", totalCoins);
         }
     }
+
+    private void Update()
+    {
+        totalCoins = PlayerPrefs.GetInt("Coins");
+    }
 }

@@ -62,7 +62,7 @@ public class SceneManagerScript : MonoBehaviour
         fader.gameObject.SetActive(true);
 
         LeanTween.alpha(fader, 1, 0);
-        LeanTween.alpha(fader, 1, 1f).setOnComplete(() => {
+        LeanTween.alpha(fader, 1, 1.5f).setOnComplete(() => {
             // Example for little pause before laoding the next scene
             Invoke("LoadGame", 1f);
         });

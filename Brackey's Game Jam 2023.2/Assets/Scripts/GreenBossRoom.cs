@@ -7,6 +7,9 @@ public class GreenBossRoom : MonoBehaviour
     [SerializeField] PolygonCollider2D exit;
     [SerializeField] PolygonCollider2D enter;
     [SerializeField] PolygonCollider2D trigger;
+    [SerializeField] PolygonCollider2D bulletBlocker;
+
+    [SerializeField] GameObject greenBossRoom;
 
     [SerializeField] GreenBossMain greenBoss;
     public bool isOnGreenBoss = false;
@@ -20,23 +23,23 @@ public class GreenBossRoom : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            
             isOnGreenBoss = true;
             enter.isTrigger = false;
             exit.isTrigger = false;
+            bulletBlocker.enabled = false;
         }
     }
 
     private void Update()
     {
-        /*
-        if (PlayerPrefs.GetFloat("GreenTrigger") == 0)
+        if ((PlayerPrefs.GetInt("GreenTrigger") == 0) && !isOn)
         {
             trigger.enabled = false;
             enter.enabled = false;
             exit.enabled = false;
-            gameObject.SetActive(false);
-        }*/
+            isOn = true;
+            greenBossRoom.SetActive(false);
+        }
                 
           
     }

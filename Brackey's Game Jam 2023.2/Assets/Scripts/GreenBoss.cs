@@ -67,18 +67,16 @@ public class GreenBoss : MonoBehaviour
             {
                 if(gameObject.name == "GreenBoss1")
                 {
-                    //PlayerPrefs.SetFloat("GreenBoss1", 0);
+                    PlayerPrefs.SetFloat("9.2", 0);
 
                 }
                 else if(gameObject.name == "GreenBoss2")
                 {
-                    //PlayerPrefs.SetFloat("GreenBoss2", 0);
+                    PlayerPrefs.SetFloat("9.3", 0);
 
                 }
-                //PlayerPrefs.Save();
-
+                PlayerPrefs.Save();
                 finalShot = true;
-                room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;

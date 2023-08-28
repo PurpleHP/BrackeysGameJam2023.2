@@ -30,7 +30,6 @@ public class ChangeCinemachineScript : MonoBehaviour
         }
         if(GreenBoss.isDead && GreenBossChild1.isDead && GreenBossChild2.isDead)
         {
-            PlayerPrefs.SetInt("GreenTrigger", 0);
             cVC.m_Follow = submarine.transform;
             cVC.m_Lens.OrthographicSize = 5.6f;
         }

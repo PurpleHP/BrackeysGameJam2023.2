@@ -33,7 +33,7 @@ public class CoinSystem : MonoBehaviour
 
     //Speed **************
 
-    private int[] hpLevelCost = { 0, 15, 16, 17 };
+    private int[] hpLevelCost = { 0, 15, 15, 15 };
     private int[] realHP = { 3,4,5,6 }; //SaveCoin'dan da deðiþtirilmeli
     [SerializeField] private TextMeshProUGUI _hpLevelText;
     [SerializeField] private TextMeshProUGUI _hpPriceText;
@@ -52,7 +52,7 @@ public class CoinSystem : MonoBehaviour
             _oxygenLevelImage.sprite = OxygenLevelImages[coinScript.oxygenLevel - 1].sprite;
 
         }
-        else
+        else if((!PlayerPrefs.HasKey("Oxygen")))
         {
             coinScript.oxygenLevel = 1;
             _oxygenLevelImage.sprite = OxygenLevelImages[0].sprite;
@@ -70,7 +70,7 @@ public class CoinSystem : MonoBehaviour
             _speedLevelImage.sprite = SpeedLevelImages[coinScript.speedLevel - 1].sprite;
 
         }
-        else
+        else if ((!PlayerPrefs.HasKey("SpeedLevel")))
         {
             coinScript.speedLevel = 1;
             _speedLevelImage.sprite = SpeedLevelImages[0].sprite;
@@ -81,7 +81,7 @@ public class CoinSystem : MonoBehaviour
             coinScript.realSpeed = PlayerPrefs.GetInt("Speed");
 
         }
-        else
+        else if(!PlayerPrefs.HasKey("Speed"))
         {
             coinScript.realSpeed = realSpeed[0];
 
@@ -95,7 +95,7 @@ public class CoinSystem : MonoBehaviour
             _hpLevelImage.sprite = HPLevelImages[coinScript.hpLevel - 1].sprite;
 
         }
-        else
+        else if (!PlayerPrefs.HasKey("HPLevel"))
         {
             coinScript.hpLevel = 1;
             _hpLevelImage.sprite = HPLevelImages[0].sprite;
@@ -106,7 +106,7 @@ public class CoinSystem : MonoBehaviour
             coinScript.realHP = PlayerPrefs.GetInt("HP");
 
         }
-        else
+        else if (!PlayerPrefs.HasKey("HPLevel"))
         {
             coinScript.realHP = realHP[0];
 
@@ -120,6 +120,7 @@ public class CoinSystem : MonoBehaviour
         {
             if (coinScript.totalCoins >= oxygenLevelCost[coinScript.oxygenLevel])
             {
+
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - oxygenLevelCost[coinScript.oxygenLevel]);
                 coinScript.oxygenLevel++;
                 PlayerPrefs.SetInt("Oxygen", coinScript.oxygenLevel);
@@ -135,6 +136,7 @@ public class CoinSystem : MonoBehaviour
         {
             if (coinScript.totalCoins >= speedLevelCost[coinScript.speedLevel])
             {
+
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - speedLevelCost[coinScript.speedLevel]);
                 coinScript.speedLevel++;
                 coinScript.realSpeed = realSpeed[coinScript.speedLevel - 1];
@@ -152,6 +154,7 @@ public class CoinSystem : MonoBehaviour
         {
             if (coinScript.totalCoins >= hpLevelCost[coinScript.hpLevel])
             {
+
                 PlayerPrefs.SetInt("Coins", coinScript.totalCoins - hpLevelCost[coinScript.hpLevel]);
                 coinScript.hpLevel++;
                 coinScript.realHP = realHP[coinScript.hpLevel-1];

@@ -12,7 +12,6 @@ public class GreenBossMain : MonoBehaviour
     [SerializeField] public float health;
     [SerializeField] CircleCollider2D box2d1;
     [SerializeField] CircleCollider2D box2d2;
-    [SerializeField] GreenBossRoom room;
     [SerializeField] public GameObject child1;
     [SerializeField] public GameObject child2;
 
@@ -69,9 +68,9 @@ public class GreenBossMain : MonoBehaviour
             sfx.PlayEnemyHit();
             if (health <= 0 && !finalShot)
             {
-
+                PlayerPrefs.SetInt("9.1", 0);
+                PlayerPrefs.Save();
                 finalShot = true;
-                room.isOnGreenBoss = false;
                 speed = 0;
                 box2d1.enabled = false;
                 box2d2.enabled = false;
