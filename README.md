@@ -7,7 +7,7 @@ Ranked from 53 ratings.
 | Criteria      | Rank   | Score  |
 | ------------- |:------:| ------:|
 | Theme:        | #47    | 4.113  |
-| Overall:      | #84    | 3.563  |
+| **Overall**:  | **#84**| 3.563  |
 | Game Design:  | #105   | 3.566  |
 | Fun:          | #113   | 3.491  |
 | Audio:        | #151   | 3.340  |
