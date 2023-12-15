@@ -1,7 +1,7 @@
 # BrackeysGameJam2023.2
-##A group project for Brackeys Game Jam 2023.2
+## A group project for Brackeys Game Jam 2023.2
 
-###Final Result: (Out of 919 Entries / 19.2k Ratings)
+### Final Result: (Out of 919 Entries / 19.2k Ratings)
 Ranked from 53 ratings. 
 
 | Criteria      | Rank   | Score  |
@@ -15,4 +15,4 @@ Ranked from 53 ratings.
 | Innovation:   | #184   | 3.189  |
 
 
-###Play it on: [Titan-ic On Itch.io](https://purplehp.itch.io/titan-ic)
+### Play it on: [Titan-ic On Itch.io](https://purplehp.itch.io/titan-ic)
